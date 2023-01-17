@@ -1,0 +1,115 @@
+<div class="panel-heading">
+  <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+</div>
+<div class="panel-body p-3">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group pt-3 fadeIn first">
+      <div class="input-field">
+        <i class="bi bi-person-circle"></i>&nbsp;
+        <input type="text" placeholder="FirstName" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+        <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+          <div *ngIf="f['firstName'].errors['required']">
+            <small class="text-danger">FirstName is required</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group pt-3 fadeIn first">
+      <div class="input-field">
+        <i class="bi bi-person-circle"></i>&nbsp;
+        <input type="text" placeholder="LastName" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+        <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+          <div *ngIf="f['lastName'].errors['required']">
+            <small class="text-danger">LastName is required</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group pt-3 fadeIn second">
+      <div class="input-field">
+        <i class="bi bi-person-circle"></i>&nbsp;
+        <input type="text" placeholder="Username" formControlName="userName" [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+        <div *ngIf="submitted && f['userName'].errors" class="invalid-feedback">
+          <div *ngIf="f['userName'].errors['required']">
+            <small class="text-danger">UserName is required</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group pt-3 fadeIn second">
+      <div class="input-field">
+        <i class="bi bi-telephone-fill"></i>&nbsp;
+        <input type="text" placeholder="MobileNumber" formControlName="mobileNumber" [ngClass]="{ 'is-invalid': submitted && f['mobileNumber'].errors }">
+        <div *ngIf="submitted && f['mobileNumber'].errors" class="invalid-feedback">
+          <div *ngIf="f['mobileNumber'].errors['required']">
+            <small class="text-danger">MobileNumber is required</small>
+          </div>
+          <div *ngIf="f['mobileNumber'].errors['pattern']">
+            <small class="text-danger">Only Numbers are Allowed</small>
+          </div>
+          <div *ngIf="f['mobileNumber'].errors['minlength']">
+            <small class="text-danger">Minimum 10 Numbers</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="form-group pt-3 fadeIn third">
+      <div class="input-field">
+        <i class="bi bi-envelope-fill"></i>&nbsp;
+        <input type="text" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">
+            <small class="text-danger">Email is required</small>
+          </div>
+          <div *ngIf="f['email'].errors['email']">
+            <small class="text-danger">Enter a valid Email</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="form-group pt-3 fadeIn third">
+      <div class="input-field">
+        <i class="bi bi-lock-fill"></i>&nbsp;
+        <input type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">
+            <small class="text-danger">Password is required</small>
+          </div>
+          <div *ngIf="f['password'].errors['minlength']">
+            <small class="text-danger">Password Length must be Minimum 8</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group pt-3 fadeIn fourth" style="color: hsl(32, 100%, 50%);">
+      <i class="bi bi-people-fill"></i>&nbsp;
+      <input class="" type="radio" name="userRole" value="Customer" formControlName="userRole" >
+      <label class="form-check-label" for="flexRadioDefault1">
+        &nbsp;Customer
+      </label>&nbsp;&nbsp;&nbsp;
+      <input class="" type="radio" name="userRole" value="Provider" formControlName="userRole">
+      <label class="form-check-label" for="flexRadioDefault1" >
+        &nbsp;Provider
+      </label>
+      <div [ngClass]="{ 'is-invalid': submitted && f['userRole'].errors }">
+
+      </div>
+      <div *ngIf="submitted && f['userRole'].errors" class="invalid-feedback">
+        <div *ngIf="f['userRole'].errors['required']">
+          <small class="text-danger">Select an Role</small>
+        </div>
+      </div>
+    </div>  
+    <button type="submit" class="btn btn-primary btn-block mt-4 w-100 fadeIn fourth">Register</button>
+    <div class="text-center pt-4" style="color: black">Already have account? <a id="forgot" routerLink="/login">Login</a></div>
+  </form>
+</div>
