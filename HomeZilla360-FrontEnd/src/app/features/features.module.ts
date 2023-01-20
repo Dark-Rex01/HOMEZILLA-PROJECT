@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     imports: [
         AuthModule,
         FeatureRoutingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
     ]
 })
 export class FeaturesModule {}
