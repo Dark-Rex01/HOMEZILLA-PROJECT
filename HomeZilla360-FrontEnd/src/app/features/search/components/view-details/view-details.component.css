@@ -1,0 +1,35 @@
+img{
+    height: 300px;
+    width: 300px;
+}
+.p-dialog-header{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.card{
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    border-color: #6366F1;
+}
+:host ::ng-deep  .p-datatable-wrapper{
+    border-radius: 20px;
+}
+.inner{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border-radius: 20px;
+    padding: 2rem;
+}
+:host ::ng-deep .p-button {
+    border-radius: 20px;
+}
+.card-upper{
+    padding: 2rem;
+    border-color: #6366F1;
+}
+h3{
+    margin-left: 20px;
+}

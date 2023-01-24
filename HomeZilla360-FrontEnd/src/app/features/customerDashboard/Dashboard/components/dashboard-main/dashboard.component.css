@@ -1,0 +1,194 @@
+@import url(https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto);
+
+/* 
+.img-account-profile{
+width:100px;
+height:100px;
+align-items: center;
+margin-left: 240px;
+margin-top: 10px;
+
+}				              
+
+.card-body{
+    height: 720px;
+    box-sizing: border-box;
+    border: 3px solid;
+    border-radius: 20px;
+    margin-left: 70px;
+    margin-top: 90px;
+    background-color: white;  
+    border-color: beige;
+    margin-bottom: 40px;
+}
+.card-photo{
+   
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+.container{
+    width: 650px;
+    
+}
+
+
+
+* {
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+	text-decoration:none;
+	list-style-type:none;
+	outline:0;
+}
+
+
+.window { 
+	width:1100px !important; 
+	height:768px !important; 
+	overflow:hidden; 
+	margin:0 auto; 
+	border:1px solid var(--mediumLight);
+}
+.center { position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);}
+
+
+img {
+	object-fit: cover;
+}
+
+header {
+	position:relative;
+	margin-top:60px;
+	width:100%; height:320px;
+	border-bottom:1px solid #f2f2f2;
+	background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0T7TteDkThTH6cG7mnfu9n_douWh-6Ogt8gAoZ4ZYBNLE6fx6g6_OISFBBXqttflOZVc&usqp=CAU");
+	background-color:orange; 
+	background-size:cover;
+	background-repeat:no-repeat;
+	z-index:99;
+}
+
+.header__wrap {
+	position:absolute;
+	top:50%; left:50%;
+	transform:translate(-50%, -50%);
+	text-align:center;
+	margin:0 auto;
+	width:100%;
+}
+.header__wrap img {
+	width:165px; height:160px;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position: 50% 50%;
+	padding:3px;
+	background-color:#FFF;
+	border:1px solid #f2f2f2;
+	border-radius:50%;
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0, .74);
+	overflow:hidden;
+	display:block;
+	text-align:center;
+	margin:0 auto;
+}
+.header__wrap #profile__img {
+	position:relative;
+	width:165px; height:160px;
+	display:block;
+	margin:0 auto;
+}
+ */
+
+
+ .card-photo {
+    position:relative;
+	/* margin-top:40px; */
+	width:100%; height:330px;
+	border-bottom:1px solid #f2f2f2;
+	/* background-image:url("https://media.istockphoto.com/id/673641858/photo/gardening-tools-seeds-and-soil-on-wooden-table.jpg?s=612x612&w=0&k=20&c=hoXIRmlLyM4EDd1yu2ykRgpmn76uosQQTrwvTOtJvm4="); */
+	background-color:#FAECD6; 
+    /* background-image: url("https://media.istockphoto.com/id/488365031/vector/seamless-pattern-with-repair-working-tools-icons.jpg?s=612x612&w=0&k=20&c=OpozDlVYf2FTBQdq36D-BbjxHRHZifS8w9SfdVfcCt4="); */
+	/* background-image: url(''); */
+	background-size:cover;
+	background-repeat:no-repeat;
+	z-index:99;
+    object-fit: cover;
+    width:1100px !important; 
+    border-radius: 20px;
+	overflow:hidden; 
+	margin:0 auto; 
+	border:1px solid var(--mediumLight);
+ }
+
+ .img-account-profile{
+    width:165px; height:160px;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position: 50% 50%;
+	padding:3px;
+	background-color:#FFF;
+	border:1px solid #f2f2f2;
+	border-radius:50%;
+	box-shadow: 0px 2px 5px 0px rgba(0,0,0, .74);
+	overflow:hidden;
+	display:block;
+	text-align:center;
+	margin:0 auto;
+    margin-left: 450px;
+    /* margin-top: 30px; */
+ }
+ .center { position:absolute; left:50%; top:50%; transform:translate(-50%, -50%);}
+.row{
+    position:relative;
+
+	/* background-color:orange;  */
+	background-size:cover;
+	background-repeat:no-repeat;
+	z-index:99;
+    object-fit: cover;
+    width:1100px !important; 
+    border-radius: 20px;  
+	overflow:hidden; 
+	margin:0 auto; 
+    background-color:#EEEEEE; 
+    /* background-image: url("https://media.istockphoto.com/id/488365031/vector/seamless-pattern-with-repair-working-tools-icons.jpg?s=612x612&w=0&k=20&c=OpozDlVYf2FTBQdq36D-BbjxHRHZifS8w9SfdVfcCt4="); */
+  
+}
+.form-group{
+    margin-right: 30px;
+    
+    
+}
+.form{
+    margin-top: 20px;   /* for profile content */
+    height: 700px;
+	box-sizing: content-box;
+	border-color: #594545;
+      
+}
+.small{
+    margin-left: 325px;
+    width: 400px;
+}
+.button{
+    margin-left: 350px;
+    
+}
+.btn{
+    background-color: #594545;
+    border-color: #FAECD3;
+}
+.btn:hover{
+    background-color: #9E7676;
+    border-color: #FAECD6;
+}
+/* .title{
+	margin-top: 20px;
+} */
+/* .form-control{
+	background-color: #EDE4E0;
+	
+} */

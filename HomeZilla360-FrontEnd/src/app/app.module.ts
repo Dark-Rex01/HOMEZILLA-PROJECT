@@ -8,6 +8,9 @@ import { FeaturesModule } from './features/features.module';
 import {ToastModule} from 'primeng/toast';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -16,11 +19,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     AppRoutingModule,
     FeaturesModule,
     BrowserModule,
-    ToastModule
+    ToastModule,
+    NgxSpinnerModule,
+    SharedModule
   ],
   providers: [
     MessageService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
