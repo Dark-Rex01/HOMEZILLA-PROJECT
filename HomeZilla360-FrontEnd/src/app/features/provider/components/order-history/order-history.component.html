@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<p-card class="card" header="Manage Orders" >
+<p-card  header="Manage Orders" >
     <p-table [value]="orderHistory.data" [rows]="10" [paginator]="true" [rowHover]="true" [(selection)]="orderHistory.data"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">

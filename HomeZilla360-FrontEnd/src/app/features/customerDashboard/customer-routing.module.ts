@@ -1,24 +1,42 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AnalyticsComponent } from "./Analytics/components/analytics/analytics.component";
-import { BarchartComponent } from "./Analytics/components/barchart/barchart.component";
-import { DoughnutComponent } from "./Analytics/components/doughnut/doughnut.component";
-import { HeadComponent } from "./Analytics/components/head/head.component";
-import { DashboardComponent } from "./Dashboard/components/dashboard-main/dashboard.component";
-import { CurrentOrdersComponent } from "./Orders/components/current-orders/current-orders.component";
-import { OrderHistoryComponent } from "./Orders/components/order-history/order-history.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
+import { AnalyticsComponent } from "./Components/analytics/analytics.component";
+import { BarchartComponent } from "./Components/analytics/barchart/barchart.component";
+import { DoughnutComponent } from "./Components/analytics/doughnut/doughnut.component";
+import { HeadComponent } from "./Components/analytics/head/head.component";
+import { DashboardComponent } from "./Components/Profile/profile.component";
+import { CurrentOrdersComponent } from "./Components/current-orders/current-orders.component";
+import { OrderHistoryComponent } from "./Components/OrderHistory/order-history.component";
+import { SidebarComponent } from "../../shared/components/sidebar/sidebar.component";
+import { CustomerComponent } from "./Components/customer/customer.component";
 
 const routes: Routes = [
-    {path:'dashboard',component:DashboardComponent},
-    {path:'currentorders', component:CurrentOrdersComponent},
-    {path:'ordershistory', component:OrderHistoryComponent},
-    {path:'sidebar', component:SidebarComponent},
-    {path:'customeranalytics', component:AnalyticsComponent},
-  
-    {path: 'doughnut', component:DoughnutComponent},
-    {path: 'barchart', component:BarchartComponent},
-    {path: 'head', component:HeadComponent}
+    {
+      path:'customer',
+      component: CustomerComponent,
+      children: [
+        {
+          path:'analytics',
+          component: AnalyticsComponent,
+          title: 'Customer Analytics'
+        },
+        {
+          path:'profile',
+          component: DashboardComponent,
+          title: 'Customer Profile'
+        },
+        {
+          path:'current-order',
+          component: CurrentOrdersComponent,
+          title: 'Current Orders'
+        },
+        {
+          path: 'order-history',
+          component: OrderHistoryComponent,
+          title: 'Order History'
+        }
+      ]
+    },
   ];
   
   @NgModule({

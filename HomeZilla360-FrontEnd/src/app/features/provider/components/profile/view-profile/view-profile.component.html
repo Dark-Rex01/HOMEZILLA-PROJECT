@@ -1,11 +1,11 @@
 
 
-<div class="card card-upper">
+<div class="card">
 
   <div class="row">
 
     <div class="col-sm-6">
-     <b> <h6>How you will appear on this site:</h6></b>
+     <b> <h3>How you will appear on this site:</h3></b>
     <div >
 
       <img class="card-img-top img-fluid" [src]="user.profilePicture"  alt="" >
@@ -24,15 +24,18 @@
 
     <div class="col-sm-6">
 
-      <h3><i class="bi bi-person-circle"></i> {{user.firstName}} {{user.lastName}}</h3><br>
+      <h1><i class="bi bi-person-circle"></i> {{user.firstName}} {{user.lastName}}</h1><br>
 
-      <h6><i class="bi bi-envelope-at-fill"></i> {{user.email}}</h6>
+      <h4><i class="bi bi-envelope-at-fill"></i> {{user.email}}</h4>
+      <br>
 
-      <h6><i class="bi bi-geo-alt-fill"></i> {{user.location}}</h6>
+      <h4><i class="bi bi-geo-alt-fill"></i> {{user.location}}</h4>
+      <br>
 
-      <h6><i class="bi bi-telephone-fill"></i> {{user.mobileNumber}}</h6>
+      <h4><i class="bi bi-telephone-fill"></i> {{user.mobileNumber}}</h4>
+      <br>
 
-      <h6><i class="bi bi-file-earmark-person"></i> {{user.description}}</h6>
+      <h5><i class="bi bi-file-earmark-person"></i> {{user.description}}</h5>
 
     </div>
 

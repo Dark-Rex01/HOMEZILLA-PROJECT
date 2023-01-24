@@ -1,0 +1,48 @@
+
+ 
+  <p-card class="card">
+    
+      <p-table #dt [value]="order.data" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[10,20,30]" [totalRecords]="120"  [globalFilterFields]="['name','country.name','representative.name','status']"[tableStyle]="{'min-width': '75rem'}"
+         [rowHover]="true" dataKey="id"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" styleClass="pager">
+         
+          <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                
+            </div>
+    
+              <h2>Current Orders</h2>
+          </ng-template>
+          
+          <ng-template pTemplate="header">
+              <tr>
+                  
+                  <th pSortableColumn="id" style="min-width:4rem"> Reference Id<p-sortIcon ></p-sortIcon></th>
+                  <th pSortableColumn="service" style="min-width:10rem">Service <p-sortIcon ></p-sortIcon></th>
+                  <th pSortableColumn="status" style="min-width:4rem">Status <p-sortIcon ></p-sortIcon></th>
+                  <th pSortableColumn="from" style="min-width:4rem">Appointment From <p-sortIcon ></p-sortIcon></th>
+                  <th pSortableColumn="to" style="min-width:4rem">Appointment To <p-sortIcon ></p-sortIcon></th>
+                  <th pSortableColumn="cancel" style="min-width:2rem">cancel </th>
+                  <th></th>
+              </tr>
+              
+          </ng-template>
+          <ng-template pTemplate="body" let-order>
+            <tr>
+                
+                <td>{{order.id}}</td>
+                <td>{{order.serviceName }}</td>
+                <!-- <td><span  pBadge styleClass="p-button-warning" badge="8" >{{order.status}}</span></td> -->
+                <td><span pBadge  [value]="order.status" size="large" styleClass="p-mr-2"></span></td>
+                <td>{{order.appointmentFrom }}</td>
+                <td>{{order.appointmentTo }}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded " (click)="cancelOrder(order)"></button>
+                </td>
+            </tr>
+        </ng-template>         
+      </p-table>
+  </p-card>
+  <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+    

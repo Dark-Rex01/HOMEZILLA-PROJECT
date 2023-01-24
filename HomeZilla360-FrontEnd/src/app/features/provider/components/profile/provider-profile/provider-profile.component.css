@@ -1,0 +1,25 @@
+.card{
+    width: 60%;
+    height: fit-content;
+    margin: 50px 300px 50px 350px;
+    border-radius: 20px;
+
+}
+.menu-page{
+    height: fit-content;
+    width: 1000px;
+    margin: 50px 160px 50px 160px;
+}
+
+:host ::ng-deep .p-tabmenu-nav-content
+{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem{
+    margin-left: 116px;
+    box-shadow: none;
+ }
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
+    box-shadow: none;
+} 

@@ -1,11 +1,11 @@
 import { Injectable, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { OrderData } from '../Orders/models/orderData';
-import { Orders } from '../Orders/models/order';
-import { Status } from '../Orders/models/status';
-import { BookOrder } from '../Orders/models/book-order';
-import { orderStatus } from '../Orders/models/order-status';
+import { OrderData } from '../model/orderData';
+import { Orders } from '../model/order';
+
+import { BookOrder } from '../model/book-order';
+import { orderStatus } from '../model/order-status';
 
 @Injectable({
   providedIn: 'root'

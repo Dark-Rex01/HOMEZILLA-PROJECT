@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
+  viewProfile()
+  {
+    
+  }
   onSubmit()
   {
     this.submitted = true;

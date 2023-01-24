@@ -1,8 +1,9 @@
-<div class="card">
+<div class="card main-card">
 <div class="service">
     <div class="row">
       <div class="col">
         <div ngbDropdown class="d-inline-block">
+        <i class="bi bi-tools"> Service : </i>
           <form [formGroup]="userForm">
             <select class="form-control" formControlName="service" required>
               <option value="">Choose a Service</option>
@@ -14,16 +15,17 @@
               </option>
             </select>
             <p class="card-text">
-              <i class="bi bi-card-heading"><b> Price : </b></i>
+              <i class="bi bi-currency-rupee"> Price : </i>
               <input
-                class="form-control"
+                class="form-control "
                 type="number"
                 formControlName="price"
+                placeholder="Enter your Price"
               />
 
               <br />
-              <button class="btn btn-primary" (click)="addService()" style="background-color: #f98d09;">
-                Save
+              <button class="btn btn-primary" (click)="addService()" style="background-color: #6366F1;">
+                Add
               </button>
             </p>
           </form>
@@ -36,12 +38,14 @@
   <div class="update-service " >
     <br>
     <div class="card mb-4 ">
-      <div class="card-header">Services</div>
+      <div class="card-header">
+        <i class="bi bi-tools"> </i> <i class ="header-text"> &nbsp; Services</i>  </div>
         <div class="card-body scroll">
           <form [formGroup]="updateForm" >
             <div class="row"  *ngFor="let service of services">
               <div class="col-sm-6">
                 <br>
+                <i class="bi bi-wrench-adjustable"></i>  &nbsp;
                   <p-chip  label="" icon="" [removable]="true" (onRemove)="deleteService(service)"  styleClass="p-mr-5 custom-chip" >{{service.service}}</p-chip>
                   <br>
               </div>
@@ -55,7 +59,7 @@
                   <ng-template pTemplate="display">
                       {{service.price}}
                       
-                  <i class="pi pi-dollar"></i>
+                  <i class="bi bi-currency-rupee"></i>
                   </ng-template>
                   <ng-template pTemplate="content">
                       <input type="number" 
