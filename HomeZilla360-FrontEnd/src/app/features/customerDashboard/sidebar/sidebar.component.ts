@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit {
         {
             
             label: 'Analytics',
-            routerLink: '/analytics',
+            routerLink: '/customeranalytics',
             icon: "assets/dash.png",
             command: () => {this.analytics()}
         },

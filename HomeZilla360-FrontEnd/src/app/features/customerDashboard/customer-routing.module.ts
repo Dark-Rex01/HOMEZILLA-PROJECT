@@ -14,7 +14,7 @@ const routes: Routes = [
     {path:'currentorders', component:CurrentOrdersComponent},
     {path:'ordershistory', component:OrderHistoryComponent},
     {path:'sidebar', component:SidebarComponent},
-    {path:'analytics', component:AnalyticsComponent},
+    {path:'customeranalytics', component:AnalyticsComponent},
   
     {path: 'doughnut', component:DoughnutComponent},
     {path: 'barchart', component:BarchartComponent},

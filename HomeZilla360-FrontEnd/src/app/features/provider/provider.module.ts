@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { ProviderRoutingModule } from './provider-routing.module';
 import {HttpClientModule} from '@angular/common/http'
 import { ProviderComponent } from "./components/provider.component";
@@ -8,20 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FullCalendarModule } from '@fullcalendar/angular';
 //kendo imports
-import { ExcelModule, GridModule, PDFModule } from '@progress/kendo-angular-grid';
-import { LabelModule} from '@progress/kendo-angular-label';
-import { LayoutModule } from '@progress/kendo-angular-layout';
-import { SchedulerModule } from '@progress/kendo-angular-scheduler';
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-import { EditorModule } from '@progress/kendo-angular-editor';
-import { FileSelectModule } from '@progress/kendo-angular-upload';
-import { ChartsModule } from '@progress/kendo-angular-charts';
-import { IntlModule } from '@progress/kendo-angular-intl';
-import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
-import { InputsModule } from '@progress/kendo-angular-inputs';
-import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { NotificationModule } from '@progress/kendo-angular-notification';
-import { NotificationService } from '@progress/kendo-angular-notification';
 import { OrdersComponent } from './components/orders/orders.component';
 import { KnobModule } from 'primeng/knob';
 
@@ -45,7 +30,6 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ChartModule } from 'primeng/chart';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { DoughnutChartComponent } from './components/analytics/doughnut-chart/doughnut-chart.component';
@@ -63,6 +47,7 @@ import { EditDetailsComponent } from './components/profile/edit-details/edit-det
 import { EditServicesComponent } from './components/profile/edit-services/edit-services.component';
 import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
 import { ProfileComponentComponent } from './components/profile/profile-component/profile-component.component';
+import { CustomerModule } from '../customerDashboard/customer.module';
 
 
 @NgModule({
@@ -87,21 +72,6 @@ import { ProfileComponentComponent } from './components/profile/profile-componen
       ProviderRoutingModule,
       InputTextModule,
         ReactiveFormsModule,
-        GridModule,
-        PDFModule,
-        ExcelModule,
-        LabelModule,
-        LayoutModule,
-        SchedulerModule,
-        ButtonsModule,
-        EditorModule,
-        FileSelectModule,
-        ChartsModule,
-        IntlModule,
-        DateInputsModule,
-        InputsModule,
-        DropDownsModule,
-        NotificationModule,
         BrowserAnimationsModule,
         TableModule,
         CalendarModule,

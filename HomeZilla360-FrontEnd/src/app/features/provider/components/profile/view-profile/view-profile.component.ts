@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ProviderService } from '@progress/kendo-angular-editor/common/provider.service';
 import { MessageService } from 'primeng/api';
-import { ServiceData } from '../../../models/service-data';
-import { ServiceList } from '../../../models/service-list';
 import { User } from '../../../models/user';
 import { ProfileService } from '../../../services/profile.service';
 
