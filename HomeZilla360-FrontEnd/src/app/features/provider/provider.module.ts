@@ -49,6 +49,7 @@ import { ViewProfileComponent } from './components/profile/view-profile/view-pro
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ProviderProfileComponent } from './components/profile/provider-profile/provider-profile.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {TooltipModule} from 'primeng/tooltip';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         InplaceModule,
         BadgeModule,
         TabMenuModule,
-        SharedModule
+        SharedModule,
+        TooltipModule
     ],
     providers: [
       MessageService,

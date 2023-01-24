@@ -9,6 +9,7 @@ import { OrderDetailsService } from '../../services/order-details.service';
   styleUrls: ['./order-history.component.scss']
 })
 export class OrderHistoryComponent implements OnInit {
+  badgeColor:string ="success";
 orderHistory: Orders;
 constructor(private ordersService: OrderDetailsService) {
   this.orderHistory= new Orders();
@@ -21,6 +22,7 @@ constructor(private ordersService: OrderDetailsService) {
   getProviderPastOrders(){
     this.ordersService.getProvidersPastOrders().subscribe((orders: Orders) => {
       this.orderHistory = orders;
+
     });
   }
 

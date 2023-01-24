@@ -25,7 +25,8 @@
     overflow-y: auto;
 }
 .card-header{
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     background-color: #6366F1;
 }
 .card-body{
@@ -56,4 +57,7 @@ input[type=number] {
   }
   .header-text{
  color:white;
+  }
+  .red{
+    color: red;
   }

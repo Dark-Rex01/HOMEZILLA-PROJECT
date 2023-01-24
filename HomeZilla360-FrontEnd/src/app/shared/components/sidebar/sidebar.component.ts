@@ -25,6 +25,8 @@ export class SidebarComponent implements OnInit {
     isLoggedIn = false;
 
     isLoginFailed = false;
+
+    tooltipLabel?: 'Profile';
   
     errorMessage = '';
   
@@ -36,26 +38,33 @@ export class SidebarComponent implements OnInit {
       
       this.dockBasicItems = [
         {
+          
+          label: 'Profile', 
+          tooltip:'Profile',
+          tooltipPosition:'right',
+          icon: "assets/icons/profile.png",        
+          command: () => {this.profile();
+          }
             
-            label: 'Analytics',
-            icon: "assets/sidenav/d2.png",
-            command: () => {this.analytics()}
         },
         {
             label: 'Current Orders',
-            icon: "assets/sidenav/current.png",
+            tooltip:'Current Orders',
+            icon: "assets/icons/order.png",
             command: () => {this.currentOrders()}
         },
         {
             label: 'Orders History',
-            icon: "assets/sidenav/order.png",
+            tooltip:'Order History',
+            icon: "assets/icons/orders-history.png",
             command: ()=> {this.pastOrders();}
         },
         {
-            label: 'Profile', 
-            icon: "assets/sidenav/prof1.png",        
-            command: () => {this.profile();
-            }
+          
+          label: 'Analytics',
+          tooltip:'Analytics',
+          icon: "assets/icons/data-analytics.png",
+          command: () => {this.analytics()}
         }
     ];
   }
