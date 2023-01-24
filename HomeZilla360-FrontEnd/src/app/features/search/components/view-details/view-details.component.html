@@ -1,0 +1,77 @@
+<p-dialog header="Provider Information" [(visible)]="visibility" [modal]="true"[breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false" (onHide) = "cancel()"
+    [responsive] = "true">
+    <div class="card card-upper">
+      <div class="row">
+        <div class="col-sm-6">
+        <div *ngIf="providerData.profilePicture != null && providerData.profilePicture != undefined; else loading">
+          <img class="card-img-top img-fluid" src="{{providerData.profilePicture}}" alt="" >
+        </div>
+        <ng-template #loading>
+          <img class="card-img-top img-fluid" src="../../../../../assets/images/avatar.jpg" alt="" >
+        </ng-template>
+      <p></p>
+        </div>
+        <div class="col-sm-6">
+          <h1><i class="bi bi-person-circle"></i> {{providerData.firstName}} {{providerData.lastName}}</h1><br>
+          <h5><i class="bi bi-envelope-at-fill"></i> {{providerData.email}}</h5>
+          <h5><i class="bi bi-geo-alt-fill"></i> {{providerData.location}}</h5>
+          <h5><i class="bi bi-telephone-fill"></i> {{providerData.mobileNumber}}</h5>
+          <h5><i class="bi bi-file-earmark-person"></i> {{providerData.description}}</h5>
+        </div>
+      </div>
+    </div>
+    
+    <br>
+    <h3><i class="bi bi-tools"></i> Service Offered</h3>
+    <div class="card">
+        <p-table [value]="providerData.serviceData" [scrollable]="true" scrollHeight="400px" styleClass="table-style">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="min-width:200px" pSortableColumn="serviceName">Service Name<p-sortIcon field="serviceName"></p-sortIcon></th>
+                    <th style="min-width:200px" pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-service>
+                <tr>
+                    <td style="min-width:200px">{{service.service}}</td>
+                    <td style="min-width:200px"><i class="bi bi-currency-rupee"></i>  <p-badge
+                        [value]="service.price"
+                        size="large"
+                        severity="success"
+                        styleClass="p-mr-1"
+                      ></p-badge></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <br>
+    <div class="card">
+        <div class="inner">
+        <h3><i class="bi bi-calendar-check-fill"></i> Book A Service</h3>
+        <br>
+        <div class="d-flex justify-content-center">
+          <p-dropdown [options]="serviceList" [(ngModel)]="serviceName" placeholder="Select a Service" optionLabel="name"[showClear]="true">
+          </p-dropdown>
+          
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+          <p-calendar [(ngModel)]="appointmentFrom" placeholder="Apointment From"  [showTime] = "true" [readonlyInput]="true" inputId="range"></p-calendar>
+
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+          <p-calendar [(ngModel)]="appointmentTo" placeholder="Appointment To"  [showTime] = "true" [readonlyInput]="true" inputId="range"></p-calendar>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+          <p-button (click) = "book()"><b>Book</b></p-button>
+        </div>
+        </div>
+        </div>
+
+    <ng-template pTemplate="footer">
+    </ng-template>
+</p-dialog>
+

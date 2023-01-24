@@ -16,7 +16,10 @@ export class AuthService{
     baseUrl = environment.apiUrl;
     public userEmailId:BehaviorSubject<string> = new BehaviorSubject('');
 
-    constructor(private http: HttpClient, private router: Router)
+    constructor(
+        private http: HttpClient, 
+        private router: Router
+    )
     {
 
     }

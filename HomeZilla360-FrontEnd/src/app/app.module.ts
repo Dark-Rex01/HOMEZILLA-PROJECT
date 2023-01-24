@@ -8,12 +8,13 @@ import { FeaturesModule } from './features/features.module';
 import {ToastModule} from 'primeng/toast';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InputsModule } from '@progress/kendo-angular-inputs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -23,13 +24,14 @@ import { GridModule } from '@progress/kendo-angular-grid';
     FeaturesModule,
     BrowserModule,
     ToastModule,
-    InputsModule,
     BrowserAnimationsModule,
-    GridModule
+    NgxSpinnerModule,
+    SharedModule
   ],
   providers: [
     MessageService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

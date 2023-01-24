@@ -1,0 +1,38 @@
+
+    <app-sidebar></app-sidebar>
+
+    <div class="card">
+      
+        <p-table #dt [value]="order.data" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"[tableStyle]="{'min-width': '75rem'}"
+           [rowHover]="true" dataKey="id"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" styleClass="pager">
+            <ng-template pTemplate="caption">
+      
+                <h2>Order History</h2>
+            </ng-template>
+            
+            <ng-template pTemplate="header">
+                <tr>    
+                    <th pSortableColumn="id" style="min-width:4rem">Reference Id<p-sortIcon ></p-sortIcon></th>
+                    <th pSortableColumn="service" style="min-width:10rem">Service <p-sortIcon ></p-sortIcon></th>
+                    <th pSortableColumn="status" style="min-width:4rem">Status <p-sortIcon ></p-sortIcon></th>
+                    <th pSortableColumn="from" style="min-width:4rem">Appointment From <p-sortIcon ></p-sortIcon></th>
+                    <th pSortableColumn="to" style="min-width:4rem">Appointment To <p-sortIcon ></p-sortIcon></th>
+                    <th></th>
+                </tr>
+                <br>
+            </ng-template>
+            <ng-template pTemplate="body" let-order>
+              <tr>    
+                  <td>{{order.id}}</td>
+                  <td>{{order.serviceName }}</td>
+                  <td><span pBadge p-badge-lg-warning value="{{order.status}}"></span></td>
+                  <td>{{order.appointmentFrom }}</td>
+                  <td>{{order.appointmentTo }}</td>
+              </tr>
+          </ng-template>         
+        </p-table>
+    </div>
+  
+      
+  

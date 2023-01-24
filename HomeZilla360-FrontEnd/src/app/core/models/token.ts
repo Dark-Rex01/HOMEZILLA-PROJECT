@@ -1,4 +1,4 @@
-export class TokenPayLoad{ 
+export class TokenPayload{
     email?: string;
     role?: string; 
     name?: string;
