@@ -1,0 +1,109 @@
+<div class="col-xl-8" >
+    <!-- Account details card-->
+    <div class="card mb-4" style ="margin-top: 50px;background-color: white; border-radius: 20px;" >
+        <div class="card-header">Account Details</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="col-xl-4">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-1" [src] ="user.profilePicture" alt="">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                       
+                        <div class="text-center">
+                              <input class="form-control" type="file" 
+                                      (change)="onChange($event)" >
+                          
+                            </div>
+                    
+                   
+            </div>
+            
+                <button (click)="updateProviderProfilePicture()" 
+                    class="btn btn-success" style="background-color: #f98d09; height: 40px; text-align: center; "  >
+                    Upload
+                </button>
+            </div>
+            <div class="col">
+              <img src="../../../../assets/images/profile-side.jpg" width="350" height="300"  >
+            </div>
+          </div>
+       
+        
+
+        <hr class="colorgraph">
+            <form >
+                
+                <div class="row gx-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="small mb-1" for="inputFirstName">First Name</label>
+                    <input class="form-control is-valid" id="inputFirstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your First name" value={{user.firstName}} required>
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLastName">Last Name</label>
+                        <input class="form-control is-valid " id="inputLastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Last name" value={{user.lastName}} required>
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputUserName">User Name</label>
+                        <input class="form-control is-valid" id="inputUserName" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Username" value={{user.userName}} required>
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                </div>
+               
+                <div class="mb-3">
+                    <label class="small mb-1" for="inputEmailAddress">Email</label>
+                    <div class="input-group has-validation">
+                    <input class="form-control is-valid" id="inputEmailAddress" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="email" placeholder="Enter your Email" value={{user.email}} required>
+                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                      Please enter a valid Email.
+                    </div>
+                    </div>
+                  </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputPhone">Phone Number</label>
+                        <input class="form-control is-valid" id="inputPhone" [(ngModel)]="user.mobileNumber" [ngModelOptions]="{standalone: true}" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}} required>
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                          Please enter a valid Mobile Number.
+                        </div>
+                      </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLocation">Location</label>
+                        <select class="form-control" [(ngModel)]="user.location" [ngModelOptions]="{standalone: true}" value={{user.location}} required>
+                          <div></div>
+                          <option value="">Choose a Location</option>
+                          <option
+                            *ngFor="let location of locationList"
+                            value="{{location}}"
+                          >
+                           {{location}}
+                          </option>
+                        </select>
+                        
+                      </div>
+                </div>
+                <hr class="colorgraph">
+                <div class="mb-3">
+                  <label class="small mb-1" for="inputDescription">Description</label>
+                  <textarea class="form-control " id="inputDescription" rows="4" [(ngModel)]="user.description" [ngModelOptions]="{standalone: true}" type="text" placeholder="Introduce yourself !" value={{user.description}} required>
+                  </textarea>
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    Please enter some Description.
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="button" (click)="onSubmit()"  style="background-color: #f98d09;" >Save changes</button>
+            </form>
+        </div>
+    </div>
+
+    
+</div>

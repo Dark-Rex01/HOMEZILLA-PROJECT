@@ -1,0 +1,48 @@
+<p-toast></p-toast>
+<p-card class="card" header="Manage Orders" >
+    <p-table [value]="waitingOrders.data" [rows]="10" [paginator]="true" [rowHover]="true" [(selection)]="waitingOrders.data"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                </th>
+                <th pSortableColumn="serviceName">Service <p-sortIcon field="serviceName"></p-sortIcon></th>
+                <th pSortableColumn="appointmentFrom">Appointment From <p-sortIcon field="appointmentFrom"></p-sortIcon></th>
+                <th pSortableColumn="appointmentTo">Appointment To <p-sortIcon field="appointmentTo"></p-sortIcon></th>
+                <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="acceptOrder">Accept </th>
+                <th pSortableColumn="declineOrder">Decline </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+            <tr>
+                <td >
+                    
+                </td>
+               <td>{{order.serviceName}}</td>
+                <td>{{order.appointmentFrom | date :'short'}}</td>
+                <td>{{order.appointmentTo | date :'short'}}</td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span pBadge [value]="order.status" size="large" styleClass="p-mr-2" ></span></td> 
+                <td>
+                    <button pButton pRipple icon="pi pi-check" class="p-button-rounded p-button-success p-mr-2" (click)="acceptOrder(order.id)"></button>
+                </td>
+                <td>
+                    <button pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-mr-2" (click)="declineOrder(order.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{waitingOrders.data ? waitingOrders.data.length : 0 }} orders.
+            </div>
+        </ng-template>
+    </p-table>
+</p-card>

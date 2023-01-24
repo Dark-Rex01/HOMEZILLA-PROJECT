@@ -1,0 +1,66 @@
+.widget-container {
+    display: flex;
+    align-items: space-between;
+    .widget {
+      width: 325px;
+      height: 125px;
+      background-color: #fff;
+      color: #fff;
+      border-radius: 5px;
+      margin: 10px;
+      box-shadow: 5px 5px 5px #939393;
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      &.green {
+        background-color: #36A2EB;
+      }
+      &.yellow {
+        background-color: #228B22;
+      }
+      &.red {
+        background-color: #FF5733;
+      }
+      &.blue {
+        background-color: rgb(20, 77, 15);
+      }
+      @media only screen and (max-width: 1600px) {
+        width: 300px;
+      }
+      @media only screen and (max-width: 1500px) {
+        width: 275px;
+      }
+      @media only screen and (max-width: 1400px) {
+        width: 250px;
+      }
+      @media only screen and (max-width: 1200px) {
+        width: 225px;
+      }
+  
+      .icon {
+        width: 100px;
+        font-size: 60px;
+        text-align: center;
+        @media only screen and (max-width: 1200px) {
+          font-size: 45px;
+        }
+      }
+      .value {
+        text-align: center;
+        width: 175px;
+        .top {
+          font-size: 30px;
+          @media only screen and (max-width: 1200px) {
+            font-size: 26px;
+          }
+        }
+        .bottom {
+          font-size: 20px;
+          margin-top: 10px;
+          @media only screen and (max-width: 1200px) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }

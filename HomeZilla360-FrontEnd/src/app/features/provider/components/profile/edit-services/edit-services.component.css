@@ -1,0 +1,56 @@
+.card{
+    margin-top: 70px;
+    border-radius: 20px;
+    max-height: 460px;
+    width: 500px;
+    margin-left: 20px;
+}
+.service{
+    flex-direction: row;
+    display: flex;
+    margin-top: 40px;
+    margin-left: 150px;
+    padding: 0% ;
+    align-items: flex-start;
+    display: flex;
+    
+}
+.update-service{
+    border-radius: 20px;
+    width: 300px;
+    margin-left: 0px;
+}
+.scroll {
+    max-height: 178px;
+    overflow-y: auto;
+}
+.card-header{
+    border-radius: 20px;
+    background-color: #fa8102;
+}
+.card-body{
+    border-radius: 20px;
+}
+.card .mb-4{
+    margin-top: 0px;
+    margin-left: 110px;
+    border-radius: 20px;
+    width: 300px;
+}
+button{
+    border-radius: 20px;
+}
+.p-mr-5 .custom-chip .ng-star-inserted .p-chip .p-component{
+    background-color: #fa8102;
+}
+
+.p-card .p-component{
+    border-radius: 30px;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .col-sm-2{
+    margin-top: 20px;
+  }
