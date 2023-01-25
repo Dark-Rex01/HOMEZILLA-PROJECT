@@ -23,6 +23,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd HomeZilla360-FrontEnd
           npm install
           npm start
         working-directory: .
