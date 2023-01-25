@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <p-card  header="Manage Orders" >
-    <p-table [value]="orderHistory.data" [rows]="10" [paginator]="true" [rowHover]="true" [(selection)]="orderHistory.data"
+    <p-table [value]="orderHistory.data" [rows]="5" [paginator]="true" [rowHover]="true" [(selection)]="orderHistory.data"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
@@ -11,10 +11,10 @@
             <tr>
                 <th style="width: 3rem">
                 </th>
-                <th pSortableColumn="serviceName">Service <p-sortIcon field="serviceName"></p-sortIcon></th>
+                <th pSortableColumn="serviceName">Service Name<p-sortIcon field="serviceName"></p-sortIcon></th>
                 <th pSortableColumn="appointmentFrom">Appointment From <p-sortIcon field="appointmentFrom"></p-sortIcon></th>
                 <th pSortableColumn="appointmentTo">Appointment To <p-sortIcon field="appointmentTo"></p-sortIcon></th>
-                <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="status">Order Status <p-sortIcon field="status"></p-sortIcon></th>
                 <th></th>
             </tr>
         </ng-template>
@@ -28,7 +28,7 @@
                 <td>{{order.appointmentTo | date :'short'}}</td>
                 <td>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span pBadge [value]="order.status" size="large" styleClass="p-mr-2" ></span>
+                    <span pBadge class="'order-badge status-' + order.status" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
                
             </tr>
         </ng-template>

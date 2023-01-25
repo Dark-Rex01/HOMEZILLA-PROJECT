@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div ngbDropdown class="d-inline-block">
-        <i class="bi bi-tools"> Service : </i>
+        <i class="bi bi-tools">  </i> Service :
           <form [formGroup]="userForm">
             <select class="form-control" formControlName="service" required>
               <option value="">Choose a Service</option>
@@ -15,7 +15,7 @@
               </option>
             </select>
             <p class="card-text">
-              <i class="bi bi-currency-rupee"> Price : </i>
+              <i class="bi bi-currency-rupee">  </i> Price :
               <input
                 class="form-control "
                 type="number"
@@ -38,15 +38,15 @@
   <div class="update-service " >
     <br>
     <div class="card mb-4 ">
-      <div class="card-header">
-        <i class="bi bi-tools"> </i> <i class ="header-text"> &nbsp; Services</i>  </div>
+      <div class="card-header header-text">
+        <i class="bi bi-tools"> </i> <b class =""> &nbsp; </b> Services </div>
         <div class="card-body scroll">
           <form [formGroup]="updateForm" >
             <div class="row"  *ngFor="let service of services">
               <div class="col-sm-6">
                 <br>
                 <i class="bi bi-wrench-adjustable"></i>  &nbsp;
-                  <p-chip  label="" icon="" [removable]="true" (onRemove)="deleteService(service)"  styleClass="p-mr-5 custom-chip" >{{service.service}}</p-chip>
+                  <p-chip  label="" icon="" [removable]="true" removeIcon="bi bi-trash-fill" (onRemove)="deleteService(service)"  styleClass="p-mr-5 custom-chip" >{{service.service}}</p-chip>
                   <br>
               </div>
               
@@ -54,19 +54,23 @@
                 
                   <br>
                   
-                <p-inplace  [closable]="true"  >
+                <p-inplace  [closable]="true" closeIcon="bi bi-x" >
                   
                   <ng-template pTemplate="display">
+                    
+                  <i class="bi bi-currency-rupee"></i>
                       {{service.price}}
                       
-                  <i class="bi bi-currency-rupee"></i>
                   </ng-template>
                   <ng-template pTemplate="content">
                       <input type="number" 
                       class="form-control"
-                      formControlName="price"  value={{service.price}} style="height: fit-content; width: 50px; border-radius: 10px;" pInputText>
+                      formControlName="price" [(ngModel)]="service.price"  value={{service.price}} style="height: fit-content; width: 50px; border-radius: 10px;" pInputText> 
                   </ng-template>
+      
+                  
               </p-inplace>
+             
               </div>
               
               <div class="col-sm-2" >
