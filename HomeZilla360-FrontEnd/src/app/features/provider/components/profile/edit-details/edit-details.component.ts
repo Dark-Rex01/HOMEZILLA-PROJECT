@@ -33,13 +33,22 @@ export class EditDetailsComponent implements OnInit {
       .updateProviderProfilePicture(this.profilePicture)
       .subscribe({
         next: (response) => {
-          (response: any) => {
-            console.log('Success!', response);
-          };
+            console.log("pic");
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Profile Picture Uploaded Successfully',
+              life: 3000,
+            });
+         
           this.getProfileDetails();
         },
         error: (error) => {
-          console.log(error);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Please Select the appropriate file type',
+            life: 3000,
+          });
         },
       });
   }

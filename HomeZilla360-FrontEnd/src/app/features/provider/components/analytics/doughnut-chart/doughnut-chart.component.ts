@@ -41,7 +41,7 @@ export class DoughnutChartComponent implements OnInit, OnDestroy {
           labels: [
             'Accepted',
             'Waiting',
-            'No-Response',
+            'Expired',
             'Canceled',
             'Declined',
           ],
