@@ -18,6 +18,8 @@ export class CurrentOrdersComponent implements OnInit {
 
   order: Orders = new Orders;
   selectedOrder?: Orders[];
+  totalRecords: number = 0;
+  pageNumber:number = 1;
 
   constructor(
     private ordersService: OrderDetailsService,
@@ -26,14 +28,13 @@ export class CurrentOrdersComponent implements OnInit {
     ) { this.order = new Orders();}
 
   ngOnInit(): void {
-    console.log("first");
     this.getCurrentOrders(); 
   }
 
   private getCurrentOrders() {
-    this.ordersService.getCurrentOrders().subscribe((orders: Orders) => {
+    this.ordersService.getCurrentOrders(this.pageNumber).subscribe((orders: Orders) => {
       this.order = orders;
-      console.log("second");
+      this.totalRecords = orders.totalPages * 10;
     });
   }
 
@@ -45,7 +46,6 @@ export class CurrentOrdersComponent implements OnInit {
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
               this.ordersService.cancelOrder(orderData.id).subscribe(() => {
-                console.log(orderData);
                 this.getCurrentOrders();
               });
               this.messageService.add({severity:'success', summary: 'successful', detail: 'Order Canceled', life:3000});    
@@ -53,6 +53,12 @@ export class CurrentOrdersComponent implements OnInit {
           
         })
       this.getCurrentOrders();
+  }
+
+  paginate(event: any) {
+    this.pageNumber = ++event.page ;
+    console.log(this.pageNumber);
+    this.getCurrentOrders();
   }
   
 

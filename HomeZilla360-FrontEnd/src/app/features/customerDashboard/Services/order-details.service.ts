@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { OrderData } from '../model/orderData';
 import { Orders } from '../model/order';
@@ -18,21 +18,10 @@ export class OrderDetailsService {
 
   constructor(private http: HttpClient) { }
 
-  getCurrentOrders(): Observable<Orders> {
-    // var currentOrders: Orders = {
-    //   currentPage: 1,
-    //   data: [],
-    //   totalPages: 0
-    // };
-    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Customers/Current-Order').pipe(
+  getCurrentOrders(pageNumber: number): Observable<Orders> {
+    let params = this.getParams(pageNumber);
+    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Customers/Current-Order', {params: params}).pipe(
       map((response: Orders ) => {
-       
-        // currentOrders = response;
-        console.log(response);
-        console.log("okkkk");
-        // console.log(currentOrders);
-        console.log("okkkk");
-        // return currentOrders;
         return  response;
       })
     );
@@ -106,6 +95,12 @@ export class OrderDetailsService {
         
       })
     );
+  }
+
+  getParams(PageNumber:number): HttpParams {
+    let obj = {PageNumber};
+    return Object.keys(obj).reduce((params, key) => 
+            obj[key as keyof typeof obj] ? params.append(key, obj[key as keyof typeof obj]) : params, new HttpParams())
   }
 
 }
