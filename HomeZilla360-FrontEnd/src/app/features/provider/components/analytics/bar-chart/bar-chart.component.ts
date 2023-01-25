@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfig } from '../../../models/appconfig';
 import { AppConfigService } from '../../../services/app-config.service';
-import { AnalyticsService } from '../services/analytics.service';
+import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
   selector: 'app-bar-chart',

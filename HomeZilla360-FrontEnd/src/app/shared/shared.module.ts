@@ -7,19 +7,22 @@ import { ButtonModule } from "primeng/button";
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { DockModule } from "primeng/dock";
 
 
 @NgModule({
-    declarations: [SearchComponent, TopNavComponent],
+    declarations: [SearchComponent, TopNavComponent, SidebarComponent],
     imports: [
         FormsModule,
         MenubarModule,
         ButtonModule,
         TieredMenuModule,
         CommonModule,
-        RouterModule
+        RouterModule,
+        DockModule
     ],
-    exports: [SearchComponent, TopNavComponent]
+    exports: [SearchComponent, TopNavComponent, SidebarComponent]
 })
 
 export class SharedModule {}

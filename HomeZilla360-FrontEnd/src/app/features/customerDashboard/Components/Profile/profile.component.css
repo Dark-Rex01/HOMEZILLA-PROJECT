@@ -2,21 +2,23 @@
     width: 100px;
     height:100px;
 }
-/* .col-xl-8{
+.col-xl-8{
     width: 850px;
     border-radius: 20px;
-    margin-left: 500px;
-} */
+    margin-left: 350px;
+}
 .card-header{
  border-radius: 20px;
  background-color: #6366F1;
- color: white;
+ color: white
+ ;
 }
 .card-body{
-    height:950px;
-} 
+    height:800px;
+}
 button{
     border-radius: 20px;
+ 
 }
 .colorgraph {
     height: 5px;
@@ -29,18 +31,10 @@ button{
     background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #aeb956 12.5%, #aeb956 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   }
   
-  /* .p-card .p-component{
+  .p-card .p-component{
     border-radius: 30px;
-} */
-.btn-success{
-    background-color: #6366F1; height: 40px; text-align: center; margin-left: 50px; 
 }
-.btn-primary{
-    background-color: #6366F1; margin-left: 250px; margin-top: 20px;
-}
-.img-account-profile{
-    margin-left: 90px;
-}
-.text-muted {
-    margin-left: 50px;
+
+.col-xl-4{
+    width: 350px;
 }

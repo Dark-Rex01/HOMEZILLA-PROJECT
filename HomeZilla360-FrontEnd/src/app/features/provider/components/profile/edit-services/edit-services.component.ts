@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ServiceData } from '../../../models/service-data';
 import { ServiceId } from '../../../models/service-id';
@@ -34,12 +34,12 @@ export class EditServicesComponent implements OnInit {
     this.serviceList = new ServiceList();
     this.userForm = this.fb.group({
       service: '',
-      price: Number,
+      price: [Number,Validators.required],
     });
     this.updateForm = this.fb.group({
       id:'',
       service:'',
-      price: Number,
+      price: [Number,Validators.required],
     })
 
   }

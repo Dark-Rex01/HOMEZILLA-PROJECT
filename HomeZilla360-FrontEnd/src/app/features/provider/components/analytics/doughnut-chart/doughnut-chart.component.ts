@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AppConfig } from '../../../models/appconfig';
 import { AppConfigService } from '../../../services/app-config.service';
-import { AnalyticsService } from '../services/analytics.service';
+import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
   selector: 'app-doughnut-chart',

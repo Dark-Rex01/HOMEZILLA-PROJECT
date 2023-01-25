@@ -46,8 +46,9 @@ import {BadgeModule} from 'primeng/badge';
 import { EditDetailsComponent } from './components/profile/edit-details/edit-details.component';
 import { EditServicesComponent } from './components/profile/edit-services/edit-services.component';
 import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
-import { ProfileComponentComponent } from './components/profile/profile-component/profile-component.component';
-import { CustomerModule } from '../customerDashboard/customer.module';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ProviderProfileComponent } from './components/profile/provider-profile/provider-profile.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -65,7 +66,7 @@ import { CustomerModule } from '../customerDashboard/customer.module';
      EditDetailsComponent,
      EditServicesComponent,
      ViewProfileComponent,
-     ProfileComponentComponent
+     ProviderProfileComponent
     ],
     imports: [
       BrowserModule,
@@ -98,15 +99,17 @@ import { CustomerModule } from '../customerDashboard/customer.module';
         FullCalendarModule,
         ChipModule,
         InplaceModule,
-        BadgeModule
-        
+        BadgeModule,
+        TabMenuModule,
+        SharedModule
     ],
     providers: [
       MessageService,
       ConfirmationService,
       AppConfigService,
     ],
-    bootstrap: [ProviderComponent]
+    bootstrap: [ProviderComponent,
+    MainComponent]
   })
   export class ProviderModule {
 

@@ -9,19 +9,20 @@ import { TableModule} from 'primeng/table';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import {BadgeModule} from 'primeng/badge';
-
+import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import {PaginatorModule} from 'primeng/paginator';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { AnalyticsComponent } from './Analytics/components/analytics/analytics.component';
-import { HeadComponent } from './Analytics/components/head/head.component';
-import { LineComponent } from './Analytics/components/line/line.component';
-import { BarchartComponent } from './Analytics/components/barchart/barchart.component';
-import { DoughnutComponent } from './Analytics/components/doughnut/doughnut.component';
+import { AnalyticsComponent } from './Components/analytics/analytics.component';
+import { HeadComponent } from './Components/analytics/head/head.component';
+import { LineComponent } from './Components/analytics/line/line.component';
+import { BarchartComponent } from './Components/analytics/barchart/barchart.component';
+import { DoughnutComponent } from './Components/analytics/doughnut/doughnut.component';
 import { CustomerRoutingModule } from './customer-routing.module';
-import { DashboardComponent } from './Dashboard/components/dashboard-main/dashboard.component';
-import { CurrentOrdersComponent } from './Orders/components/current-orders/current-orders.component';
-import { OrderHistoryComponent } from './Orders/components/order-history/order-history.component';
+import { DashboardComponent } from './Components/Profile/profile.component';
+import { CurrentOrdersComponent } from './Components/current-orders/current-orders.component';
+import { OrderHistoryComponent } from './Components/OrderHistory/order-history.component';
+import { CustomerComponent } from './Components/customer/customer.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -29,12 +30,12 @@ import { OrderHistoryComponent } from './Orders/components/order-history/order-h
     DashboardComponent,
     CurrentOrdersComponent,
     OrderHistoryComponent,
-    SidebarComponent,
     AnalyticsComponent,
     HeadComponent,
     LineComponent,
     DoughnutComponent,
-    BarchartComponent
+    BarchartComponent,
+    CustomerComponent
   ],
 
 
@@ -53,7 +54,9 @@ import { OrderHistoryComponent } from './Orders/components/order-history/order-h
     ChartModule,
     PaginatorModule,
     BadgeModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    CardModule,
+    SharedModule
   ],
   providers: [
     ConfirmationService
