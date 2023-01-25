@@ -54,7 +54,7 @@
                 
                   <br>
                   
-                <p-inplace  [closable]="true"  >
+                <p-inplace  [closable]="true" closeIcon="bi bi-x" >
                   
                   <ng-template pTemplate="display">
                     
@@ -65,9 +65,12 @@
                   <ng-template pTemplate="content">
                       <input type="number" 
                       class="form-control"
-                      formControlName="price"  value={{service.price}} style="height: fit-content; width: 50px; border-radius: 10px;" pInputText>
+                      formControlName="price" [(ngModel)]="service.price"  value={{service.price}} style="height: fit-content; width: 50px; border-radius: 10px;" pInputText> 
                   </ng-template>
+      
+                  
               </p-inplace>
+             
               </div>
               
               <div class="col-sm-2" >
