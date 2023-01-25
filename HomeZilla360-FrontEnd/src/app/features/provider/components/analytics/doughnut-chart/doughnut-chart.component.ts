@@ -40,27 +40,27 @@ export class DoughnutChartComponent implements OnInit, OnDestroy {
         this.data = {
           labels: [
             'Accepted',
+            'Declined',
             'Waiting',
             'Expired',
-            'Canceled',
-            'Declined',
+            'Cancelled',
           ],
           datasets: [
             {
               data: res,
               backgroundColor: [
                 '#228B22',
-                '#FF6384',
+                '#FF5733 ',
                 '#36A2EB',
                 '#FFCE56',
-                ' #FF5733 ',
+                ' #FF6384 ',
               ],
               hoverBackgroundColor: [
                 '#228B22',
-                '#FF6384',
+                '#FF5733',
                 '#36A2EB',
                 '#FFCE56',
-                ' #FF5733 ',
+                ' #FF6384',
               ],
             },
           ],
