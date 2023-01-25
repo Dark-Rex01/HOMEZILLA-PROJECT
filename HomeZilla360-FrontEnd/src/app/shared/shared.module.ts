@@ -6,6 +6,7 @@ import {MenubarModule} from 'primeng/menubar';
 import { ButtonModule } from "primeng/button";
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CommonModule } from "@angular/common";
         MenubarModule,
         ButtonModule,
         TieredMenuModule,
-        CommonModule
+        CommonModule,
+        RouterModule
     ],
     exports: [SearchComponent, TopNavComponent]
 })

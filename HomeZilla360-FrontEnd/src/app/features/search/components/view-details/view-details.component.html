@@ -1,4 +1,4 @@
-<p-dialog header="Provider Information" [(visible)]="visibility" [modal]="true"[breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+<p-dialog header="Provider Information" [(visible)]="visibility" [modal]="true"[breakpoints]="{'960px': '75vw'}" [style]="{width: '600px'}"
     [draggable]="false" [resizable]="false" (onHide) = "cancel()"
     [responsive] = "true">
     <div class="card card-upper">
@@ -13,17 +13,17 @@
       <p></p>
         </div>
         <div class="col-sm-6">
-          <h1><i class="bi bi-person-circle"></i> {{providerData.firstName}} {{providerData.lastName}}</h1><br>
-          <h5><i class="bi bi-envelope-at-fill"></i> {{providerData.email}}</h5>
-          <h5><i class="bi bi-geo-alt-fill"></i> {{providerData.location}}</h5>
-          <h5><i class="bi bi-telephone-fill"></i> {{providerData.mobileNumber}}</h5>
-          <h5><i class="bi bi-file-earmark-person"></i> {{providerData.description}}</h5>
+          <h3><i class="bi bi-person-circle"></i> {{providerData.userName}}</h3><br>
+          <h6><i class="bi bi-envelope-at-fill"></i> {{providerData.email}}</h6>
+          <h6><i class="bi bi-geo-alt-fill"></i> {{providerData.location}}</h6>
+          <h6><i class="bi bi-telephone-fill"></i> {{providerData.mobileNumber}}</h6>
+          <h6><i class="bi bi-file-earmark-person"></i> {{providerData.description}}</h6>
         </div>
       </div>
     </div>
     
     <br>
-    <h3><i class="bi bi-tools"></i> Service Offered</h3>
+    <h3 style="margin-left: 70px;"><i class="bi bi-tools"></i> Service Offered</h3>
     <div class="card">
         <p-table [value]="providerData.serviceData" [scrollable]="true" scrollHeight="400px" styleClass="table-style">
             <ng-template pTemplate="header">
@@ -57,12 +57,12 @@
         </div>
         <br>
         <div class="d-flex justify-content-center">
-          <p-calendar [(ngModel)]="appointmentFrom" placeholder="Apointment From"  [showTime] = "true" [readonlyInput]="true" inputId="range"></p-calendar>
+          <p-calendar [minDate]="minimumDate" [(ngModel)]="appointmentFrom" placeholder="Apointment From" [showTime] = "true" [readonlyInput]="true" inputId="range"></p-calendar>
 
         </div>
         <br>
         <div class="d-flex justify-content-center">
-          <p-calendar [(ngModel)]="appointmentTo" placeholder="Appointment To"  [showTime] = "true" [readonlyInput]="true" inputId="range"></p-calendar>
+          <p-calendar [minDate]="appointmentFrom" [(ngModel)]="appointmentTo" placeholder="Appointment To"  [showTime] = "true" [readonlyInput]="true" inputId="range"></p-calendar>
         </div>
         <br>
         <div class="d-flex justify-content-center">

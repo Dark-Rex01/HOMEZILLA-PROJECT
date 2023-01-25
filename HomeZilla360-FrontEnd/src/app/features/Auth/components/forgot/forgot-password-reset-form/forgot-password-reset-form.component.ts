@@ -50,7 +50,9 @@ export class ForgotPasswordResetFormComponent implements OnInit {
       this.resetData.password = this.resetForm.value.newPassword;
       this.authService.resetPassword(this.resetData).subscribe({
         next: (res) => {
-          this.messageService.add({severity:'success', summary: res.body.message, life: 3000});
+          this.router.navigateByUrl('/login').then(() =>{
+            this.messageService.add({severity:'success', summary: res.body.message, life: 3000});
+          })
         },
         error: (err) => {
           this.messageService.add({severity:'error', summary: err.error.message, life: 3000});

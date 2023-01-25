@@ -15,6 +15,9 @@ export class ViewDetailsComponent implements OnInit,  OnChanges{
   @Input() visibility: boolean = false;
   @Output() viewDetailsDestroyed = new EventEmitter<boolean>();
 
+  minimumDate = new Date();
+
+
   serviceName: any;
   id: string = "";
   providerData: ProviderData =  new ProviderData();

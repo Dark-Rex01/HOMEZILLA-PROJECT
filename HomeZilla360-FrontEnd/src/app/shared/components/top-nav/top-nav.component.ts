@@ -25,7 +25,8 @@ export class TopNavComponent implements OnInit {
             },
             {
                 label:'Home',
-                icon:'pi pi-fw pi-home'
+                icon:'pi pi-fw pi-home',
+                routerLink: '/home'
             },
             {
                 label:'Logout',

@@ -16,11 +16,13 @@ h4 {
     border-radius: 20px;
     background-color: white;
     color: #6366F1;
+    box-shadow: none;
 }
 :host ::ng-deep .p-button:hover{
     border-radius: 20px;
     background-color: white;
     color: #6366F1;
+    
 }
 
 /* :host ::ng-deep .secondary:hover{

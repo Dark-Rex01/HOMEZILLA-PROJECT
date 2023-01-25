@@ -1,5 +1,6 @@
 import { TokenType } from "@angular/compiler";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import jwtDecode from "jwt-decode";
 import { TokenPayload } from "../models/token";
 
@@ -10,6 +11,10 @@ import { TokenPayload } from "../models/token";
 export class JwtService {
   token : TokenPayload = new TokenPayload();
   JwtToken: string = "";
+
+  constructor(
+    private router: Router
+    ) { }
 
   public getUser(): any {
     const user = window.localStorage.getItem("auth-token");
@@ -28,6 +33,7 @@ export class JwtService {
   public logOut()
   {
     window.localStorage.removeItem("auth-token");
+    this.router.navigate(['/home'])
   }
   
   public getDecodedToken(): TokenPayload{

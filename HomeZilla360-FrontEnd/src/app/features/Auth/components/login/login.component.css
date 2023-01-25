@@ -237,4 +237,6 @@ input[type='password'] {
   .underlineHover:hover:after{
     width: 100%;
   }
-  
+.outer{
+  margin-right: 100px;
+}

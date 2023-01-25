@@ -39,15 +39,6 @@ a{
     cursor: pointer;
 }
 
-
-.btn-block{
-    border: #6366F1;
-    background-color: #6366F1;
-}
-
-.btn:hover{
-    background-color: white;
-}
 .panel{
     min-height: 380px;
     box-shadow: 10px 20px 200px rgb(228, 225, 225);
@@ -234,4 +225,7 @@ input[type='password'] {
   
   .underlineHover:hover:after{
     width: 100%;
+}
+.outer{
+  margin-right: 100px;
 }
