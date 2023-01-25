@@ -43,12 +43,12 @@ export class SidebarComponent implements OnInit {
         },
         {
             label: 'Current Orders',
-            icon: "assets/sidenav/current.png",
+            icon: "bi bi-cart-check-fill",
             command: () => {this.currentOrders()}
         },
         {
             label: 'Orders History',
-            icon: "assets/sidenav/order.png",
+            icon: "pi-history",
             command: ()=> {this.pastOrders();}
         },
         {
