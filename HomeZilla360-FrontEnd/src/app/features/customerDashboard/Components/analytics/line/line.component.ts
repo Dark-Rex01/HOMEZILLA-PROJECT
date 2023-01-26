@@ -23,14 +23,14 @@ export class LineComponent implements OnInit {
       datasets: [
           {
               label: 'Accepted Orders',
-              data: [65, 59, 80, 81, 56, 55, 40],
+              data: [11, 0, 0, 0, 0, 0, 0],
               fill: false,
               tension: .4,
               borderColor: '#42A5F5'
           },
           {
               label: 'Waiting Orders',
-              data: [28, 48, 40, 19, 86, 27, 90],
+              data: [9, 0, 0, 0, 0, 0, 0],
               fill: false,
               borderDash: [5, 5],
               tension: .4,
@@ -38,7 +38,7 @@ export class LineComponent implements OnInit {
           },
           {
               label: 'Declined Orders',
-              data: [12, 51, 62, 33, 21, 62, 45],
+              data: [2, 0, 0, 0, 0, 0, 0],
               fill: true,
               borderColor: '#FFA726',
               tension: .4,

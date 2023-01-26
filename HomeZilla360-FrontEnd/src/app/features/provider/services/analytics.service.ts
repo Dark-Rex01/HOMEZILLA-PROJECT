@@ -16,8 +16,8 @@ export class AnalyticsService {
   getAcceptedOrdersCount():Observable<number>{
     return this.http.get<number>('https://homezilla360-api.azurewebsites.net/api/Analytics/Get-Provider-All-Accepted-Orders-Count');
   }
-  getDeclinedOrdersCount():Observable<number>{
-    return this.http.get<number>('https://homezilla360-api.azurewebsites.net/api/Analytics/Get-Provider-All-Accepted-Orders-Count');
+  getExpiredOrdersCount():Observable<number>{
+    return this.http.get<number>('https://homezilla360-api.azurewebsites.net/api/Analytics/Get-Provider-All-Expired-Orders-Count');
   }
   getDoughnutChartData():Observable<Array<number>>{
     var res = this.http.get<Array<number>>('https://homezilla360-api.azurewebsites.net/api/Analytics/Get-Provider-Doughnut-Data');
