@@ -17,7 +17,7 @@ declinedOrders: number = 0;
   ngAfterViewInit() {
     this.getTotalOrdersCount();
     this.getTotalAcceptedOrdersCount();
-    this.getTotalExpiredOrdersCount();
+    this.getTotalDeclinedOrdersCount();
   }
 
   getTotalOrdersCount(){
@@ -34,8 +34,8 @@ declinedOrders: number = 0;
   }
 
   
-  getTotalExpiredOrdersCount(){
-    this.analyticsService.getExpiredOrdersCount().subscribe(count =>{
+  getTotalDeclinedOrdersCount(){
+    this.analyticsService.getDeclinedOrdersCount().subscribe(count =>{
       this.declinedOrders = count ;
     });
   }

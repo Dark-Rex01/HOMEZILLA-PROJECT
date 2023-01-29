@@ -10,7 +10,11 @@ import { OrderDetailsService } from '../../services/order-details.service';
 })
 export class OrderHistoryComponent implements OnInit {
   badgeColor:string ="success";
-orderHistory: Orders;
+  orderHistory: Orders;
+  detailsDialog: boolean;
+  viewDetailData: any;
+  totalRecords: number = 0;
+  pageNumber:number = 1;
 constructor(private ordersService: OrderDetailsService) {
   this.orderHistory= new Orders();
  }
@@ -20,10 +24,20 @@ constructor(private ordersService: OrderDetailsService) {
   }
 
   getProviderPastOrders(){
-    this.ordersService.getProvidersPastOrders().subscribe((orders: Orders) => {
+    this.ordersService.getProvidersPastOrders(this.pageNumber).subscribe((orders: Orders) => {
       this.orderHistory = orders;
-
+      this.totalRecords = orders.totalPages * 10;
     });
+  }
+  viewDetails(orderHistory: any){
+    this.viewDetailData = this.orderHistory.data.find(x => x.id == orderHistory)
+    console.log(this.viewDetailData);
+    this.detailsDialog = true;
+  }
+  paginate(event: any) {
+    this.pageNumber = ++event.page ;
+    console.log(this.pageNumber);
+    this.getProviderPastOrders();
   }
 
 }
