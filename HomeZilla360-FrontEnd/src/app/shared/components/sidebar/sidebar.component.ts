@@ -25,6 +25,8 @@ export class SidebarComponent implements OnInit {
     isLoggedIn = false;
 
     isLoginFailed = false;
+
+    tooltipLabel?: 'Profile';
   
     errorMessage = '';
   
@@ -46,21 +48,22 @@ export class SidebarComponent implements OnInit {
         },
         {
             label: 'Current Orders',
-            icon: "assets/sidenav/current.png",
-            command: () => {this.currentOrders()},
-            tooltip: 'Current Orders'
+            tooltip:'Current Orders',
+            icon: "assets/icons/order.png",
+            command: () => {this.currentOrders()}
         },
         {
             label: 'Orders History',
-            icon: "assets/sidenav/order.png",
-            command: ()=> {this.pastOrders();},
-            tooltip: 'Orders History'
+            tooltip:'Order History',
+            icon: "assets/icons/orders-history.png",
+            command: ()=> {this.pastOrders();}
         },
         {
-            label: 'Profile', 
-            icon: "assets/sidenav/prof1.png",        
-            command: () => {this.profile();},
-            tooltip: 'Edit Profile'
+          
+          label: 'Analytics',
+          tooltip:'Analytics',
+          icon: "assets/icons/data-analytics.png",
+          command: () => {this.analytics()}
         }
     ];
   }
@@ -76,7 +79,7 @@ export class SidebarComponent implements OnInit {
   
      else if(this.Token.role=="Provider"){
   
-       this.router.navigate(['/provider/profile']);
+       this.router.navigate(['/provider/profile/edit-profile']);
   
      }
   
@@ -97,7 +100,7 @@ export class SidebarComponent implements OnInit {
 
    else if(this.Token.role=="Provider"){
 
-     this.router.navigate(['/provider/current-order']);
+     this.router.navigate(['/provider/current-orders']);
 
    }
 
@@ -140,5 +143,5 @@ export class SidebarComponent implements OnInit {
   }
 
 
-}
+    }
  

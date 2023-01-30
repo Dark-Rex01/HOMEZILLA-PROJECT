@@ -1,6 +1,7 @@
 
  <div class="dock-window">
-    <p-dock [model]="dockBasicItems" position="left">
+    
+    <p-dock [model]="dockBasicItems" position="left"  >
         <ng-template pTemplate="item" let-item>
             <img [src]="item.icon" [alt]="item.label" width="60%" [pTooltip]="item.tooltip" >
         </ng-template>

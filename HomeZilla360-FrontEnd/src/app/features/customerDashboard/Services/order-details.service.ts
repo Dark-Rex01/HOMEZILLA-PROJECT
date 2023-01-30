@@ -80,7 +80,6 @@ export class OrderDetailsService {
     return  this.http.get<Orders>('${this.baseUrl}/api/Providers/Current-Order').pipe(
       map((response: Orders ) => {
         currentOrders = response;
-        console.log(response);
         return currentOrders;
         
       })
@@ -94,9 +93,7 @@ export class OrderDetailsService {
     };
     return  this.http.get<Orders>(`${this.baseUrl}/api/Providers/Past-Order`).pipe(
       map((response: Orders ) => {
-        console.log("third");
         pastOrders = response;
-        console.log(response);
         return pastOrders;
         
       })

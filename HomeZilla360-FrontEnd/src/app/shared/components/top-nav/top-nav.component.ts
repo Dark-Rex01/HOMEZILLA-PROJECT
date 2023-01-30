@@ -63,12 +63,19 @@ export class TopNavComponent implements OnInit {
           {
               label:'Logout',
               icon:'pi pi-fw pi-power-off',
-              command: () => this.jwtService.logOut()
+              command: () => {
+                this.LogOut();
+              }
+
           }
       ];
-      this.logged = this.isLogged();
+      this.isLogged();
     } 
-    isLogged (): Boolean{
+    LogOut(): void{
+      this.jwtService.logOut();
+      this.logged = false;
+    }
+    isLogged (): boolean{
       var isLoggedIn = this.jwtService.isLogged();
       if(isLoggedIn)
       {
@@ -86,7 +93,7 @@ export class TopNavComponent implements OnInit {
           //   this.profilePic = res.profilePicture;
           // })
         }
-        return true;
+        return  true;
       }
       else{
         return false;

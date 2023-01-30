@@ -12,7 +12,6 @@ import { BadgeModule} from 'primeng/badge';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import { PaginatorModule} from 'primeng/paginator';
-import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { AnalyticsComponent } from './Components/analytics/analytics.component';
 import { HeadComponent } from './Components/analytics/head/head.component';
 import { LineComponent } from './Components/analytics/line/line.component';
@@ -24,13 +23,13 @@ import { CurrentOrdersComponent } from './Components/current-orders/current-orde
 import { OrderHistoryComponent } from './Components/OrderHistory/order-history.component';
 import { CustomerComponent } from './Components/customer/customer.component';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CurrentOrdersComponent,
     OrderHistoryComponent,
-    SidebarComponent,
     AnalyticsComponent,
     HeadComponent,
     LineComponent,
@@ -56,7 +55,8 @@ import { CommonModule } from '@angular/common';
     CustomerRoutingModule,
     CardModule,
     PaginatorModule,
-    CommonModule  
+    CommonModule,
+    SharedModule
   ],
   providers: [
     ConfirmationService
