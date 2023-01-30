@@ -41,7 +41,6 @@ export class SidebarComponent implements OnInit {
           
           label: 'Profile', 
           tooltip:'Profile',
-          tooltipPosition:'right',
           icon: "assets/icons/profile.png",        
           command: () => {this.profile();
           }
