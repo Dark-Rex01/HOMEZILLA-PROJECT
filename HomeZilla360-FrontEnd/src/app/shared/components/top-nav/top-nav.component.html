@@ -1,22 +1,27 @@
 <nav class="navbar navbar-light " style ="background-color: #6366F1">
     
     <div class="d-flex justify-content-start">
-        <img src="../../../../assets/images/logo.png" width="50px" height="50px" class="d-inline-block align-top" alt="">
-        <h4>HomeZilla360</h4>
+        <a routerLink="/home"><img src="../../../../assets/images/logo.png" width="50px" height="50px" class="d-inline-block align-top" alt=""></a>
+        <a routerLink="/home"><h4>HomeZilla360</h4></a>
     </div>
     <div class="d-flex justify-content-end">
         <div *ngIf="isLogged(); else loading">
-            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
-            <button #btn type="button" pButton icon="" label="" (click)="menu.toggle($event)" class="btn"> {{token.name}} &nbsp; <i class="bi bi-list" style="font-size: 1.5rem; "></i> </button>&nbsp; &nbsp; &nbsp; 
-            <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+
+            <div *ngIf="profilePic; else default">
+                <img [src]="profilePic" width="40" height="40" class="rounded-circle">
+                <button #btn type="button" pButton icon="" label="" (click)="menu.toggle($event)" class="btn"> {{token.name}} &nbsp; <i class="bi bi-list" style="font-size: 1.5rem; "></i> </button>&nbsp; &nbsp; &nbsp; 
+                <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+            </div>
+            <ng-template #default>
+                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                <button #btn type="button" pButton icon="" label="" (click)="menu.toggle($event)" class="btn"> {{token.name}} &nbsp; <i class="bi bi-list" style="font-size: 1.5rem; "></i> </button>&nbsp; &nbsp; &nbsp; 
+                <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+            </ng-template> 
         </div>
         <ng-template #loading>
             <p-button routerLink="/login">Login</p-button>&nbsp; &nbsp; &nbsp; 
             <p-button styleClass="secondary"routerLink = "/register/register-form">Sign Up</p-button>&nbsp; &nbsp; &nbsp; 
-        </ng-template>
-        
-        
-        
+        </ng-template> 
     </div>
 </nav>
 

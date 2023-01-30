@@ -28,7 +28,8 @@
                 <div class="form-group pt-3 fadeIn second">
                   <div class="input-field">
                     <i class="bi bi-lock-fill"></i>&nbsp;
-                    <input type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                    <input [type]="type" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                    <i (click)="hideShowPass()"class="bi {{eyeIcon}}"></i>
                     <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
                       <div *ngIf="f['password'].errors['required']">
                         <small class="text-danger">Password is required</small>

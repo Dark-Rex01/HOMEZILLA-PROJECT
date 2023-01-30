@@ -1,8 +1,7 @@
 
-/*--------- Font ------------*/
 @import url(https://fonts.googleapis.com/css?family=Droid+Sans);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
-/* fontawesome */
+
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
@@ -17,10 +16,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-/*------ utiltity classes -----*/
+
 .fl{ float:left; }
 .fr{ float: right; }
-/*its also known as clearfix*/
+
 .group:before,
 .group:after {
     content: "";
@@ -30,7 +29,7 @@
     clear: both;
 }
 .group {
-    zoom: 1;  /*For IE 6/7 (trigger hasLayout) */
+    zoom: 1; 
 }
 
 body {
@@ -45,9 +44,7 @@ body {
     border-radius: 20px;
     margin-bottom: 40px
 }
-/* .wrapper {
-    
-} */
+
 .table {
     width: 100%;
     margin: 60px auto;
@@ -70,7 +67,7 @@ body {
     border-radius: 5px;   
     margin-left: 30px; 
     margin-top: 35px;
-/*    border: 1px solid red;*/
+
 }
 
 .content{
@@ -78,7 +75,7 @@ body {
     color: #FEFEFE;
     padding: 20px 0 10px 0;
 }
-/*arrow creation*/
+
 .content:after, .content:before,.pt-footer:before,.pt-footer:after {
 	top: 100%;
 	left: 50%;
@@ -111,7 +108,7 @@ body {
     font-size: 0.9rem;
 }
 
-/*PERSONAL*/
+
 .personal .title{        
     background: #36A2EB;    
     color: white;
@@ -125,7 +122,7 @@ body {
 .personal .pt-footer:after{
     border-top-color: #FFFFFF;
 }
-/*PROFESSIONAL*/
+
 .professional .title{
     background: #228B22;
     color: white;
@@ -139,7 +136,7 @@ body {
 .professional .pt-footer:after{
     border-top-color: #FFFFFF;
 }
-/*BUSINESS*/
+
 .business .title{
     background: #FF5733;
     color: white;
@@ -167,4 +164,77 @@ body {
 }
 .business .pt-footer:after {
     border-top-color: #FFFFFF;	
-}
+} 
+
+// .widget-container {
+//     display: flex;
+//     align-items: space-between;
+//     background-color: white;
+//     width: 1285px;
+//     margin-left: 200px;
+//     margin-top: 20px;
+//     border-radius: 20px;
+//     height: 150px;
+//     .widget {
+//       width: 325px;
+//       height: 125px;
+//       background-color: #fff;
+//       color: #fff;
+//       border-radius: 5px;
+//       margin: 10px;
+//       box-shadow: 5px 5px 5px #939393;
+//       display: flex;
+//       align-items: center;
+//       padding: 20px;
+//       &.green {
+//         background-color: #36A2EB;
+//       }
+//       &.yellow {
+//         background-color: #228B22;
+//       }
+//       &.red {
+//         background-color: #FF5733;
+//       }
+//       &.blue {
+//         background-color: rgb(20, 77, 15);
+//       }
+//       @media only screen and (max-width: 1600px) {
+//         width: 300px;
+//       }
+//       @media only screen and (max-width: 1500px) {
+//         width: 275px;
+//       }
+//       @media only screen and (max-width: 1400px) {
+//         width: 250px;
+//       }
+//       @media only screen and (max-width: 1200px) {
+//         width: 225px;
+//       }
+  
+//       .icon {
+//         width: 100px;
+//         font-size: 60px;
+//         text-align: center;
+//         @media only screen and (max-width: 1200px) {
+//           font-size: 45px;
+//         }
+//       }
+//       .value {
+//         text-align: center;
+//         width: 175px;
+//         .top {
+//           font-size: 30px;
+//           @media only screen and (max-width: 1200px) {
+//             font-size: 26px;
+//           }
+//         }
+//         .bottom {
+//           font-size: 20px;
+//           margin-top: 10px;
+//           @media only screen and (max-width: 1200px) {
+//             font-size: 16px;
+//           }
+//         }
+//       }
+//     }
+//   }

@@ -1,7 +1,7 @@
-import { TokenType } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import jwtDecode from "jwt-decode";
+import { MessageService } from "primeng/api";
 import { TokenPayload } from "../models/token";
 
 @Injectable({
@@ -13,7 +13,8 @@ export class JwtService {
   JwtToken: string = "";
 
   constructor(
-    private router: Router
+    private router: Router,
+    private messageService: MessageService,
     ) { }
 
   public getUser(): any {
@@ -33,7 +34,9 @@ export class JwtService {
   public logOut()
   {
     window.localStorage.removeItem("auth-token");
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home']).then(() => {
+      this.messageService.add({severity:'success', summary: "Logout Successfull", life: 3000});
+    })
   }
   
   public getDecodedToken(): TokenPayload{

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { ProfileService } from '../../Services/profile.service';
+import { ProfilesService } from '../../Services/profiles.service';
 import { User } from '../../model/user';
 @Component({
   selector: 'app-profile',
@@ -17,19 +17,36 @@ export class DashboardComponent implements OnInit{
   query: string= "";
   location:string= "";
   pageNumber: number=1;
+  submitted = false;
   
+
   constructor(
     
-    private profileService : ProfileService,
+    private profileService : ProfilesService,
     private messageService: MessageService,
+    private formBuilder: FormBuilder
   ){
     this.user = new User();
   }
 
   ngOnInit() {
+
+    this.dashboardform = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      userName: ['', Validators.required],
+      mobileNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
+      address:  ['', Validators.required],      
+    })
+
          this.getProfileDetails();
          
 
+  }
+
+  get d(){
+    return this.dashboardform.controls;
   }
   getProfileDetails(){
     this.profileService.getProfileDetails().subscribe(user => {
@@ -40,24 +57,34 @@ export class DashboardComponent implements OnInit{
   updateProfilePicture() {
     this.profileService.updateProfilePicture(this.profilePicture).subscribe({
       next: (response) => {
-        this.messageService.add({severity: 'success', summary: 'successfully changed', life: 3000});
-        this.getProfileDetails();
-      },
-      error: (error) => {
-        this.messageService.add({severity:'error', summary: 'error', life: 3000});
-      }
-  });
+                this.messageService.add({severity: 'success', summary: 'successfully changed', life: 3000});
+                this.getProfileDetails();
+              },
+              error: (error) => {
+                this.messageService.add({severity:'error', summary: 'error', life: 3000});
+              }
+    });
+ 
   }
 
   onSubmit(){
-  this.profileService.updateProfile(this.user).subscribe({
-    next: (response) => {
-      this.messageService.add({severity: 'success', summary:'successfully changed', life: 3000});
-    },
-    error: (error) => {
-      this.messageService.add({severity:'error', summary: 'error', life: 3000});
+    this.submitted = true;
+    if(this.dashboardform.invalid)
+    {
+      return;
     }
-  });
+    else{
+      this.user = this.dashboardform.value;
+      this.profileService.updateProfile(this.user).subscribe({
+        next: (response) => {
+          this.messageService.add({severity: 'success', summary:'successfully changed', life: 3000});
+        },
+        error: (error) => {
+          this.messageService.add({severity:'error', summary: 'error', life: 3000});
+        }
+      });
+    }
+ 
   }
 
   onChange(event:any)

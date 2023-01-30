@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted =  false;
 
+  isText:boolean = false;
+  eyeIcon: string = "bi-eye-slash-fill";
+  type:string = "password";
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -34,10 +38,12 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
-  viewProfile()
-  {
-    
+  hideShowPass(){
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "bi-eye-fill" : this.eyeIcon = "bi-eye-slash-fill";
+    this.isText ? this.type = "text" : this.type = "password";
   }
+
   onSubmit()
   {
     this.submitted = true;
