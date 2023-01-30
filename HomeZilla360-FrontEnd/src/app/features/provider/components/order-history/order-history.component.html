@@ -44,7 +44,7 @@
     <p-paginator [rows]="10" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
 
 </p-card>
-<p-dialog [(visible)]="detailsDialog"  style="width: fit-content;border-radius: 20px;" header="Customer Details" [modal]="true" styleClass="p-fluid" class="dialog">
+<p-dialog [(visible)]="detailsDialog"  header="Customer Details" [modal]="true" styleClass="p-fluid" class="dialog">
     <ng-template pTemplate="content" >
         <div class="container dialogContainer">
             <div class="row">

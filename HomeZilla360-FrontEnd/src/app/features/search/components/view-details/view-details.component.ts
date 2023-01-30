@@ -73,7 +73,6 @@ export class ViewDetailsComponent implements OnInit,  OnChanges{
         }
       },
       error:(err => {
-        console.log(err);
       })
       
     })

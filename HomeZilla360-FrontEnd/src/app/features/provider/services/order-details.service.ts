@@ -52,9 +52,7 @@ export class OrderDetailsService {
     let params = this.getParams(pageNumber);
     return  this.http.get<Orders>(`${this.baseUrl}api/Providers/Past-Order`,{params: params}).pipe(
       map((response: Orders ) => {
-        console.log("third");
         pastOrders = response;
-        console.log(response);
         return pastOrders;
         
       })

@@ -63,7 +63,6 @@ export class ForgotPasswordResetFormComponent implements OnInit {
 
   onOtpChange(otp: string) {
     this.resetData.otp = parseInt(otp);
-    console.log(this.resetData);
   }
 
 }

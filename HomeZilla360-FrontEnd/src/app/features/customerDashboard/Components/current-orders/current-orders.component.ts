@@ -57,7 +57,6 @@ export class CurrentOrdersComponent implements OnInit {
 
   paginate(event: any) {
     this.pageNumber = ++event.page ;
-    console.log(this.pageNumber);
     this.getCurrentOrders();
   }
   
