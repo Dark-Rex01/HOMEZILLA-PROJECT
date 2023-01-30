@@ -3,7 +3,7 @@ import { AnalyticsService } from '../../../Services/analytics.service';
 @Component({
   selector: 'app-head',
   templateUrl: './head.component.html',
-  styleUrls: ['./head.component.css']
+  styleUrls: ['./head.component.scss']
 })
 export class HeadComponent implements OnInit {
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AnalyticsService } from '../../../Services/analytics.service';
 @Component({
   selector: 'app-line',
   templateUrl: './line.component.html',
@@ -7,45 +7,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LineComponent implements OnInit {
 
-  lineStylesData: any;
+  Data: any;
 
   basicOptions: any;
+  monthNames : string[] = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+  date=new Date().getMonth();
 
-  constructor() { }
+  constructor(private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
    this.LineChart();
   }
 
   LineChart(){
-    this.lineStylesData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-          {
-              label: 'Accepted Orders',
-              data: [65, 59, 80, 81, 56, 55, 40],
-              fill: false,
-              tension: .4,
-              borderColor: '#42A5F5'
-          },
-          {
-              label: 'Waiting Orders',
-              data: [28, 48, 40, 19, 86, 27, 90],
-              fill: false,
-              borderDash: [5, 5],
-              tension: .4,
-              borderColor: '#66BB6A'
-          },
-          {
-              label: 'Declined Orders',
-              data: [12, 51, 62, 33, 21, 62, 45],
-              fill: true,
-              borderColor: '#FFA726',
-              tension: .4,
-              backgroundColor: 'rgba(255,167,38,0.2)'
-          }
-      ]
-  };
-
+    this.analyticsService.getLineChart().subscribe({
+      next: (response)=>{
+        this.Data = {
+          labels: [this.monthNames[(this.date).toString()],
+           this.monthNames[(this.date+11).toString()] ,
+           this.monthNames[(this.date+10).toString()],
+           this.monthNames[(this.date+9).toString()],
+           this.monthNames[(this.date+8).toString()], 
+           this.monthNames[(this.date+7).toString()], 
+           this.monthNames[(this.date+6).toString()]],
+          datasets: [
+            {
+              label: 'Number of Orders',
+              backgroundColor: '#42A5F5',
+              data: response,
+            },
+          ],
+        };
+      }
+    })
   }
 }
+
+  

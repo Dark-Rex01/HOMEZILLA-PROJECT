@@ -8,10 +8,11 @@ import { DockModule} from 'primeng/dock';
 import { TableModule} from 'primeng/table';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import {BadgeModule} from 'primeng/badge';
+import { BadgeModule} from 'primeng/badge';
 import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
-import {PaginatorModule} from 'primeng/paginator';
+import { PaginatorModule} from 'primeng/paginator';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { AnalyticsComponent } from './Components/analytics/analytics.component';
 import { HeadComponent } from './Components/analytics/head/head.component';
 import { LineComponent } from './Components/analytics/line/line.component';
@@ -22,14 +23,14 @@ import { DashboardComponent } from './Components/Profile/profile.component';
 import { CurrentOrdersComponent } from './Components/current-orders/current-orders.component';
 import { OrderHistoryComponent } from './Components/OrderHistory/order-history.component';
 import { CustomerComponent } from './Components/customer/customer.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CurrentOrdersComponent,
     OrderHistoryComponent,
+    SidebarComponent,
     AnalyticsComponent,
     HeadComponent,
     LineComponent,
@@ -47,8 +48,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     TreeTableModule,
     ButtonModule,
     DockModule,
-    // MenuModule,
-    // MenubarModule,
     TableModule,
     ConfirmDialogModule,
     ChartModule,
@@ -56,7 +55,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     BadgeModule,
     CustomerRoutingModule,
     CardModule,
-    SharedModule
+    PaginatorModule,
+    CommonModule  
   ],
   providers: [
     ConfirmationService

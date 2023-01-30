@@ -1,4 +1,4 @@
-
+/* 
 body {
     background: #F2F2F2;
     font-family: 'Droid Sans', sans-serif;
@@ -6,7 +6,26 @@ body {
     font-size: 16px;
     margin-top: -225px;
     margin-left: 70px;
-    height: 730px;
+    height: 360px;
     border-radius: 20px;
-    width: 640px;
+    width: 400px;
 }
+ng ::host .element.style{
+    width: 40%;
+    height: 40%;
+
+
+} */
+
+
+
+.card{
+    width: 640px;
+    margin-top: -223px;
+    text-align: center;
+    margin-left: 70px;
+    background-color:#F2F2F2;
+    border-radius: 20px;
+    height: 420px;
+}
+

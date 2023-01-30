@@ -14,11 +14,8 @@
                      
                       <div class="text-center">
                             <input class="form-control" type="file" 
-                                    (change)="onChange($event)" >
-                        
-                          </div>
-                  
-                 
+                                    (change)="onChange($event)" >                        
+                          </div>               
           </div>
           
               <button (click)="updateProfilePicture()" 
@@ -27,35 +24,44 @@
               </button>
           </div>
           <div class="col">
-            <img src="../../../../assets/images/profile-side.jpg" width="350" height="300"  >
+            <img src="../../../../assets/images/side1.svg" width="350" height="300"  >
           </div>
         </div>
      
       
 
       <hr class="colorgraph">
-          <form >
+           <form [formGroup]="dashboardform" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label class="small mb-1" for="inputUserName">User Name</label>
-              <input class="form-control is-valid" id="inputUserName" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Username" value={{user.userName}} required>
-              <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                Looks good!
+              <input class="form-control is-valid"   [(ngModel)]="user.userName"  type="text" placeholder="Username" formControlName="userName" [ngClass]="{ 'is-invalid': submitted && d['userName'].errors }" required>
+              <div *ngIf="submitted && d['userName'].errors" class="invalid-feedback">
+                <div *ngIf="d['userName'].errors['required']">
+                  <small class="text-danger">UserName is required</small>
+                </div>
               </div>
+
               </div>
               
               <div class="row gx-3 mb-3">
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputFirstName">First Name</label>
-                  <input class="form-control is-valid" id="inputFirstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your First name" value={{user.firstName}} required>
-                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Looks good!
+                 <input class="form-control is-valid"  [(ngModel)]="user.firstName" formControlName="firstName"  type="text" placeholder="Enter your First name" value={{user.firstName}} [ngClass]="{ 'is-invalid': submitted && d['firstName'].errors }" required>
+                 <div *ngIf="submitted && d['firstName'].errors" class="invalid-feedback">
+                  <div *ngIf="d['firstName'].errors['required']">
+                    <small class="text-danger">FirstName is required</small>
                   </div>
                 </div>
+                
+                </div>
+                
                   <div class="col-md-6">
                       <label class="small mb-1" for="inputLastName">Last Name</label>
-                      <input class="form-control is-valid " id="inputLastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Last name" value={{user.lastName}} required>
-                      <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        Looks good!
+                      <input class="form-control is-valid " id="inputLastName" [(ngModel)]="user.lastName" formControlName="lastName" type="text" placeholder="Enter your Last name" value={{user.lastName}} [ngClass]="{ 'is-invalid': submitted && d['lastName'].errors }" required>
+                      <div *ngIf="submitted && d['lastName'].errors" class="invalid-feedback">
+                        <div *ngIf="d['lastName'].errors['required']">
+                          <small class="text-danger">LastName is required</small>
+                        </div>
                       </div>
                     </div>
               </div>
@@ -63,28 +69,43 @@
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputEmailAddress">Email</label>
                   <div class="input-group has-validation">
-                  <input class="form-control is-valid" id="inputEmailAddress" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="email" placeholder="Enter your Email" value={{user.email}} required>
-                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Please enter a valid Email.
+                  <input class="form-control is-valid" id="inputEmailAddress" [(ngModel)]="user.email" formControlName="email" type="email" placeholder="Enter your Email" value={{user.email}}  [ngClass]="{ 'is-invalid': submitted && d['email'].errors }" required>
+                  <div *ngIf="submitted && d['email'].errors" class="invalid-feedback">
+                    <div *ngIf="d['email'].errors['required']">
+                      <small class="text-danger">Email is required</small>
+                    </div>
+                    <div *ngIf="d['email'].errors['email']">
+                      <small class="text-danger">Enter a valid Email</small>
+                    </div>
                   </div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputPhone">Phone Number</label>
-                  <input class="form-control is-valid" id="inputPhone" [(ngModel)]="user.mobileNumber" [ngModelOptions]="{standalone: true}" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}} required>
-                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                    Please enter a valid Mobile Number.
+                  <input class="form-control is-valid" id="inputPhone" [(ngModel)]="user.mobileNumber" formControlName="mobileNumber" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}}  [ngClass]="{ 'is-invalid': submitted && d['mobileNumber'].errors }" required>
+                  <div *ngIf="submitted && d['mobileNumber'].errors" class="invalid-feedback">
+                    <div *ngIf="d['mobileNumber'].errors['required']">
+                      <small class="text-danger">MobileNumber is required</small>
+                    </div>
+                    <div *ngIf="d['mobileNumber'].errors['pattern']">
+                      <small class="text-danger">Only Numbers are Allowed</small>
+                    </div>
+                    <div *ngIf="d['mobileNumber'].errors['minlength']">
+                      <small class="text-danger">Minimum 10 Numbers</small>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div class="mb-3">
-                <label class="small mb-1" for="inputUserName">Address</label>
-                <input class="form-control is-valid" id="inputUserName" [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Username" value={{user.address}} required>
-                <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                  Looks good!
+                <label class="small mb-1" for="inputAddress">Address</label>
+                <input class="form-control is-valid" id="inputAddress" [(ngModel)]="user.address" formControlName="address" type="text" placeholder="Enter your address" value={{user.address}} [ngClass]="{ 'is-invalid': submitted && d['address'].errors }" required>
+                <div *ngIf="submitted && d['address'].errors" class="invalid-feedback">
+                  <div *ngIf="d['address'].errors['required']">
+                    <small class="text-danger">Address is required</small>
+                  </div>
                 </div>
-                </div>
+                </div> 
 
               <hr class="colorgraph">
               

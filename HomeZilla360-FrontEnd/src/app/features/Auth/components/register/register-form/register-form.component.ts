@@ -15,6 +15,10 @@ export class RegisterFormComponent implements OnInit {
   submitted = false;
   userData!: SignUp;
 
+  isText:boolean = false;
+  eyeIcon: string = "bi-eye-slash-fill";
+  type:string = "password";
+
   constructor(
     private formBuilder: FormBuilder, 
     private authService: AuthService, 
@@ -36,6 +40,12 @@ export class RegisterFormComponent implements OnInit {
   }
 
   get f() { return this.registerForm.controls; }
+
+  hideShowPass(){
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "bi-eye-fill" : this.eyeIcon = "bi-eye-slash-fill";
+    this.isText ? this.type = "text" : this.type = "password";
+  }
 
   // register user
   onSubmit()

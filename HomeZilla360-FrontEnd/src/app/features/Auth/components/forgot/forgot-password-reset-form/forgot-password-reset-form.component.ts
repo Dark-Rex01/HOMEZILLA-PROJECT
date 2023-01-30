@@ -15,6 +15,11 @@ export class ForgotPasswordResetFormComponent implements OnInit {
   resetForm!: FormGroup;
   submitted = false;
   public resetData: ResetPassword = new ResetPassword();
+
+  isText:boolean = false;
+  eyeIcon: string = "bi-eye-slash-fill";
+  type:string = "password";
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -38,6 +43,12 @@ export class ForgotPasswordResetFormComponent implements OnInit {
 
   get f() { return this.resetForm.controls; }
 
+  hideShowPass(){
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "bi-eye-fill" : this.eyeIcon = "bi-eye-slash-fill";
+    this.isText ? this.type = "text" : this.type = "password";
+  }
+  
   onSubmit()
   {
     this.submitted = true;
@@ -65,5 +76,7 @@ export class ForgotPasswordResetFormComponent implements OnInit {
     this.resetData.otp = parseInt(otp);
     console.log(this.resetData);
   }
+
+  
 
 }

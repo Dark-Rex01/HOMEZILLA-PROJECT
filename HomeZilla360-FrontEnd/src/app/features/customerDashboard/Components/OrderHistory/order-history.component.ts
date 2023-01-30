@@ -10,6 +10,8 @@ import { Orders } from '../../model/order';
 export class OrderHistoryComponent implements OnInit {
 
   order: Orders = new Orders;
+  pageNumber: number = 0;
+
 
   constructor(private ordersService: OrderDetailsService) { }
 
@@ -20,6 +22,12 @@ export class OrderHistoryComponent implements OnInit {
       console.log("second");
     });
   }
+
+  
+  paginate(event: any) {
+    this.pageNumber = event.page ;
+   
+}
 
 
 

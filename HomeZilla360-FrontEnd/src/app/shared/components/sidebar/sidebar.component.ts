@@ -25,8 +25,6 @@ export class SidebarComponent implements OnInit {
     isLoggedIn = false;
 
     isLoginFailed = false;
-
-    tooltipLabel?: 'Profile';
   
     errorMessage = '';
   
@@ -38,33 +36,30 @@ export class SidebarComponent implements OnInit {
       
       this.dockBasicItems = [
         {
-          
-          label: 'Profile', 
-          tooltip:'Profile',
-          tooltipPosition:'right',
-          icon: "assets/icons/profile.png",        
-          command: () => {this.profile();
-          }
+            
+            label: 'Analytics',
+            icon: "assets/sidenav/d2.png",
+            command: () => {this.analytics()},
+            tooltip: 'Analytics',       
             
         },
         {
             label: 'Current Orders',
-            tooltip:'Current Orders',
-            icon: "assets/icons/order.png",
-            command: () => {this.currentOrders()}
+            icon: "assets/sidenav/current.png",
+            command: () => {this.currentOrders()},
+            tooltip: 'Current Orders'
         },
         {
             label: 'Orders History',
-            tooltip:'Order History',
-            icon: "assets/icons/orders-history.png",
-            command: ()=> {this.pastOrders();}
+            icon: "assets/sidenav/order.png",
+            command: ()=> {this.pastOrders();},
+            tooltip: 'Orders History'
         },
         {
-          
-          label: 'Analytics',
-          tooltip:'Analytics',
-          icon: "assets/icons/data-analytics.png",
-          command: () => {this.analytics()}
+            label: 'Profile', 
+            icon: "assets/sidenav/prof1.png",        
+            command: () => {this.profile();},
+            tooltip: 'Edit Profile'
         }
     ];
   }
@@ -80,7 +75,7 @@ export class SidebarComponent implements OnInit {
   
      else if(this.Token.role=="Provider"){
   
-       this.router.navigate(['/provider/profile/edit-profile']);
+       this.router.navigate(['/provider/profile']);
   
      }
   
@@ -101,7 +96,7 @@ export class SidebarComponent implements OnInit {
 
    else if(this.Token.role=="Provider"){
 
-     this.router.navigate(['/provider/current-orders']);
+     this.router.navigate(['/provider/current-order']);
 
    }
 
@@ -144,5 +139,5 @@ export class SidebarComponent implements OnInit {
   }
 
 
-    }
+}
  

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuItem, MessageService } from 'primeng/api';
-import { ignoreElements } from 'rxjs';
+import { AfterContentChecked, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { MenuItem} from 'primeng/api';
 import { TokenPayload } from 'src/app/core/models/token';
 import { JwtService } from 'src/app/core/utils/jwt.service';
-import { DashboardComponent } from 'src/app/features/customerDashboard/Components/Profile/profile.component';
+import { ProfilesService } from 'src/app/features/customerDashboard/Services/profiles.service';
+import { ProfileService } from 'src/app/features/provider/services/profile.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -15,13 +15,21 @@ export class TopNavComponent implements OnInit {
 
   constructor(
     public jwtService: JwtService,
-    private messageService: MessageService,
+    private providerService: ProfileService,
+    private customerServcie: ProfilesService,
     private router: Router
-  ) { }
+  ) 
+  {
+    if (event instanceof NavigationStart) {
+      console.log("change");
+    }
+  }
   customerMenu!: MenuItem[];
   providerMenu!: MenuItem[];
+  profilePic: string;
   items!: MenuItem[];
   token: TokenPayload = new TokenPayload();
+  logged: Boolean = false;
 
     ngOnInit() {
         this.customerMenu = [
@@ -58,6 +66,7 @@ export class TopNavComponent implements OnInit {
               command: () => this.jwtService.logOut()
           }
       ];
+      this.logged = this.isLogged();
     } 
     isLogged (): Boolean{
       var isLoggedIn = this.jwtService.isLogged();
@@ -67,9 +76,15 @@ export class TopNavComponent implements OnInit {
         if(this.token.role == "Customer")
         {
           this.items = this.customerMenu;
+          // this.customerServcie.getProfileDetails().subscribe(res => {
+          //   this.profilePic = res.profilePicture;
+          // })
         }
         else{
           this.items = this.providerMenu;
+          // this.providerService.getProviderProfileDetails().subscribe(res => {
+          //   this.profilePic = res.profilePicture;
+          // })
         }
         return true;
       }
@@ -77,17 +92,5 @@ export class TopNavComponent implements OnInit {
         return false;
       }
     } 
-
-    dashBoard()
-    {
-      var token  = this.jwtService.getDecodedToken();
-      if(token.role === "Customer")
-          {
-            this.router.navigate(['/customer/analytics'])
-          }
-          else{
-            this.router.navigate(['/provider/analytics'])
-          }
-    }
 
 }

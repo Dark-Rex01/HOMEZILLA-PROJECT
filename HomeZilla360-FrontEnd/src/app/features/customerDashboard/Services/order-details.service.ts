@@ -1,11 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { OrderData } from '../model/orderData';
 import { Orders } from '../model/order';
-
 import { BookOrder } from '../model/book-order';
 import { orderStatus } from '../model/order-status';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +13,25 @@ export class OrderDetailsService {
 
   status: string[] = [];
   serviceNames: string[] = [];
-
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   getCurrentOrders(pageNumber: number): Observable<Orders> {
-    let params = this.getParams(pageNumber);
-    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Customers/Current-Order', {params: params}).pipe(
+    var currentOrders: Orders = {
+      currentPage: 1,
+      data: [],
+      totalPages: 0
+    };
+  
+    return  this.http.get<Orders>(`${this.baseUrl}/api/Customers/Current-Order`).pipe(
       map((response: Orders ) => {
+       
         return  response;
       })
     );
   }
+ 
 
   getPastOrders(): Observable<Orders> {
     var pastOrders: Orders = {
@@ -33,7 +39,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Customers/Past-Order').pipe(
+    return  this.http.get<Orders>(`${this.baseUrl}/api/Customers/Past-Order`).pipe(
       map((response: Orders ) => {
         console.log("third");
         pastOrders = response;
@@ -46,7 +52,7 @@ export class OrderDetailsService {
 
   bookOrder(orderData: BookOrder)
   {
-    var res =  this.http.post<any>('https://homezilla360-api.azurewebsites.net/BookOrder',orderData, {
+    var res =  this.http.post<any>(`${this.baseUrl}/api/BookOrder`,orderData, {
       responseType: 'text' as 'json'
     });
     return res;
@@ -54,15 +60,15 @@ export class OrderDetailsService {
 
   cancelOrder(orderId: string | undefined)
   {
-    return this.http.put('https://homezilla360-api.azurewebsites.net/CancelOrder', { orderId: orderId });
+    return this.http.put(`${this.baseUrl}/api/CancelOrder`, { orderId: orderId },  {responseType: 'text'});
   }
 
   acceptOrder(orderId: orderStatus) {
-    return this.http.put<string>(`https://homezilla360-api.azurewebsites.net/AcceptOrder`, orderId);
+    return this.http.put<string>(`${this.baseUrl}/api/AcceptOrder`, orderId);
   }
 
   declineOrder(orderId: string) {
-    return this.http.delete<any>(`https://homezilla360-api.azurewebsites.net/DeclineOrder`);
+    return this.http.delete<any>(`${this.baseUrl}/api/DeclineOrder`);
   }
 
   getProviderCurrentOrders(): Observable<Orders> {
@@ -71,7 +77,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Providers/Current-Order').pipe(
+    return  this.http.get<Orders>('${this.baseUrl}/api/Providers/Current-Order').pipe(
       map((response: Orders ) => {
         currentOrders = response;
         console.log(response);
@@ -86,7 +92,7 @@ export class OrderDetailsService {
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>('https://homezilla360-api.azurewebsites.net/api/Providers/Past-Order').pipe(
+    return  this.http.get<Orders>(`${this.baseUrl}/api/Providers/Past-Order`).pipe(
       map((response: Orders ) => {
         console.log("third");
         pastOrders = response;
@@ -95,12 +101,6 @@ export class OrderDetailsService {
         
       })
     );
-  }
-
-  getParams(PageNumber:number): HttpParams {
-    let obj = {PageNumber};
-    return Object.keys(obj).reduce((params, key) => 
-            obj[key as keyof typeof obj] ? params.append(key, obj[key as keyof typeof obj]) : params, new HttpParams())
   }
 
 }

@@ -2,8 +2,8 @@
  
   <p-card class="card">
     
-      <p-table #dt [value]="order.data" [rows]="10" [pageLinks]="3" [globalFilterFields]="['name','country.name','representative.name','status']"[tableStyle]="{'min-width': '75rem'}"
-         [rowHover]="true" dataKey="id"
+      <p-table #dt [value]="order.data" [globalFilterFields]="['name','country.name','representative.name','status']"[tableStyle]="{'min-width': '75rem'}"
+         [rowHover]="true" dataKey="id" 
           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true" styleClass="pager">
          
           <ng-template pTemplate="caption">
@@ -32,7 +32,6 @@
                 
                 <td>{{order.id}}</td>
                 <td>{{order.serviceName }}</td>
-                <!-- <td><span  pBadge styleClass="p-button-warning" badge="8" >{{order.status}}</span></td> -->
                 <td><span pBadge  [value]="order.status" size="large" styleClass="p-mr-2"></span></td>
                 <td>{{order.appointmentFrom }}</td>
                 <td>{{order.appointmentTo }}</td>
@@ -40,9 +39,10 @@
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded " (click)="cancelOrder(order)"></button>
                 </td>
             </tr>
-        </ng-template>         
+        </ng-template>   
+        
       </p-table>
-      <p-paginator [rows]="10" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+      <p-paginator [rows]="6" (onPageChange)="paginate($event)"></p-paginator>
   </p-card>
   <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 
