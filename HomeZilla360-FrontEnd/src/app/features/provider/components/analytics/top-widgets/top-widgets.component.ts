@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { count } from 'rxjs';
 import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class TopWidgetsComponent implements AfterViewInit {
 totalOrders: number = 0 ;
 acceptedOrders: number = 0;
 declinedOrders: number = 0;
+totalRevenue: number = 0;
   constructor(
     private analyticsService : AnalyticsService
   ) { }
@@ -18,26 +20,32 @@ declinedOrders: number = 0;
     this.getTotalOrdersCount();
     this.getTotalAcceptedOrdersCount();
     this.getTotalDeclinedOrdersCount();
+    this.getTotalRevenue();
   }
 
   getTotalOrdersCount(){
-    this.analyticsService.getTotalOrdersCount().subscribe(count =>{
-      this.totalOrders = count ;
+    this.analyticsService.getTotalOrdersCount().subscribe(res =>{
+      this.totalOrders = res ;
     });
   }
 
   
   getTotalAcceptedOrdersCount(){
-    this.analyticsService.getAcceptedOrdersCount().subscribe(count =>{
-      this.acceptedOrders = count ;
+    this.analyticsService.getAcceptedOrdersCount().subscribe(res =>{
+      this.acceptedOrders = res ;
     });
   }
 
   
   getTotalDeclinedOrdersCount(){
-    this.analyticsService.getDeclinedOrdersCount().subscribe(count =>{
-      this.declinedOrders = count ;
+    this.analyticsService.getDeclinedOrdersCount().subscribe(res =>{
+      this.declinedOrders = res ;
     });
   }
 
+  getTotalRevenue(){
+    this.analyticsService.getTotalRevenue().subscribe(res =>{
+      this.totalRevenue = res;
+    });
+  }
 }

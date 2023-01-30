@@ -21,6 +21,9 @@ export class AnalyticsService {
   getDeclinedOrdersCount():Observable<number>{
     return this.http.get<number>(`${this.baseUrl}api/Analytics/Get-Provider-All-Declined-Orders-Count`);
   }
+  getTotalRevenue():Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}api/Analytics/Get-Provider-Revenue`);
+  }
   getDoughnutChartData():Observable<Array<number>>{
     var res = this.http.get<Array<number>>(`${this.baseUrl}api/Analytics/Get-Provider-Doughnut-Data`);
     return res;
