@@ -1,0 +1,8 @@
+:host ::ng-deep .p-dock-list-container{
+background-color: #6366F1;
+border-top-right-radius: 20px;
+border-bottom-right-radius: 20px;
+}
+:host ::ng-deep .p-dock-left{
+    position: fixed;
+}

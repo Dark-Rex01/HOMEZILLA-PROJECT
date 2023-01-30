@@ -46,7 +46,7 @@
               <div class="col-sm-6">
                 <br>
                 <i class="bi bi-wrench-adjustable"></i>  &nbsp;
-                  <p-chip  label="" icon="" [removable]="true" removeIcon="bi bi-trash-fill" (onRemove)="deleteService(service)"  styleClass="p-mr-5 custom-chip" >{{service.service}}</p-chip>
+                  <p-chip  label="" icon=""    styleClass="p-mr-5 custom-chip" >{{service.service}}</p-chip>
                   <br>
               </div>
               
@@ -74,7 +74,8 @@
               </div>
               
               <div class="col-sm-2" >
-                
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-3" (click)="deleteService(service)"  style="width: 30px; height: 30px;"></button>
+                &nbsp;
                 <button pButton pRipple icon="pi pi-check" class="p-button-rounded p-button-success p-mr-3" (click)="updateService(service)"  style="width: 30px; height: 30px;"></button>
               </div>
             </div>

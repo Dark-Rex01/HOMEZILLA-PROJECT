@@ -22,12 +22,12 @@ export class BarchartComponent implements OnInit {
           {
               label: 'Orders',
               backgroundColor: '#FF5733',
-              data: [65, 59, 80, 81]
+              data: [6, 5, 0, 0]
           },
           {
               label: 'Canceled',
               backgroundColor: '#228B22',
-              data: [28, 48, 40, 19]
+              data: [1, 1, 0, 0]
           }
       ]
   };

@@ -36,11 +36,12 @@ export class SidebarComponent implements OnInit {
       
       this.dockBasicItems = [
         {
-            
-            label: 'Analytics',
-            icon: "assets/sidenav/d2.png",
-            command: () => {this.analytics()},
-            tooltip: 'Analytics',       
+          
+          label: 'Profile', 
+          tooltip:'Profile',
+          icon: "assets/icons/profile.png",        
+          command: () => {this.profile();
+          }
             
         },
         {

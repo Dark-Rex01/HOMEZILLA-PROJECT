@@ -1,3 +1,21 @@
+.viewDetails{
+    background-color: #6366F1;
+    border-radius: 20px;
+   
+}
+
+.viewDetails  :hover{
+background-color: #4253CE;
+}
+.viewDetails :hover{
+    background-color: #4253CE;
+}
+.card-img-top{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
 :host ::ng-deep {
     .p-paginator {
         .p-paginator-current {
@@ -71,6 +89,31 @@
     .p-datatable-customers .p-datatable-tbody > tr > td .p-column-title {
         display: none;
     }
+    .p-dialog .p-dialog-content:last-of-type{
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    .p-dialog-draggable .p-dialog-header{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        background-color: #6366F1;
+        color: white;
+    }
+    .p-element .p-dialog{
+        border-radius: 20px;
+    }
+    .p-dialog-header-close-icon {
+        color:white;
+        font-size: 2rem;
+
+      }
+      .p-dialog-header-close-icon:hover{
+        color:rgb(240, 233, 233);
+        font-size: 2rem;
+        box-shadow: none;
+        background-color: #6366F1;
+      }
+
 }
 
 @media screen and (max-width: 960px) {

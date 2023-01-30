@@ -50,6 +50,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ProviderProfileComponent } from './components/profile/provider-profile/provider-profile.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {TooltipModule} from 'primeng/tooltip';
+import { PaginatorModule } from 'primeng/paginator';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import {TooltipModule} from 'primeng/tooltip';
         BadgeModule,
         TabMenuModule,
         SharedModule,
-        TooltipModule
+        TooltipModule,
+        PaginatorModule,
     ],
     providers: [
       MessageService,

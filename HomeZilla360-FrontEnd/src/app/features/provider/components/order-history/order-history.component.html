@@ -1,6 +1,6 @@
 <p-toast></p-toast>
 <p-card  header="Manage Orders" >
-    <p-table [value]="orderHistory.data" [rows]="5" [paginator]="true" [rowHover]="true" [(selection)]="orderHistory.data"
+    <p-table [value]="orderHistory.data" [rows]="5" [pageLinks]="3" [rowHover]="true" [(selection)]="orderHistory.data"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
@@ -15,7 +15,7 @@
                 <th pSortableColumn="appointmentFrom">Appointment From <p-sortIcon field="appointmentFrom"></p-sortIcon></th>
                 <th pSortableColumn="appointmentTo">Appointment To <p-sortIcon field="appointmentTo"></p-sortIcon></th>
                 <th pSortableColumn="status">Order Status <p-sortIcon field="status"></p-sortIcon></th>
-                <th></th>
+                <th pSortableColumn="viewDetails">Customer Details </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-order>
@@ -29,7 +29,10 @@
                 <td>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span pBadge class="'order-badge status-' + order.status" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
-               
+                </td>
+                <td>
+                    <button pButton pRipple  class=" p-button p-mr-2 viewDetails" (click)="viewDetails(order.id)">View Details</button>
+                </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
@@ -38,4 +41,37 @@
             </div>
         </ng-template>
     </p-table>
+    <p-paginator [rows]="10" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+
 </p-card>
+<p-dialog [(visible)]="detailsDialog"  style="width: fit-content;border-radius: 20px;" header="Customer Details" [modal]="true" styleClass="p-fluid" class="dialog">
+    <ng-template pTemplate="content" >
+        <div class="container dialogContainer">
+            <div class="row">
+                
+              <div class="col" style="margin-top: 50px;">
+              
+                <img class="card-img-top img-fluid" [src]="viewDetailData.customer.profilePicture"  alt="" >
+                &nbsp;
+              </div>
+              <div class="col-8">
+                &nbsp;
+                <p><i class="bi bi-person-fill"></i>&nbsp;{{viewDetailData.customer.firstName}} &nbsp;{{viewDetailData.customer.lastName}}</p>
+        <p><i class="bi bi-person-square"></i>&nbsp;{{viewDetailData.customer.userName}}</p>
+        &nbsp;
+        <h5 style="color: #6366F1;"><i class="bi bi-person-lines-fill"></i> &nbsp;<b>Contact Details:</b></h5>
+        &nbsp;
+        <p><i class="bi bi-envelope-at-fill"></i>&nbsp; {{viewDetailData.customer.email}}</p>
+        <p><i class="bi bi-phone-fill"></i>&nbsp;{{viewDetailData.customer.mobileNumber}}</p>
+        <p><i class="bi bi-geo-alt-fill"></i>&nbsp;{{viewDetailData.customer.address}}</p>
+              </div>
+            </div>
+        </div>
+        
+        
+
+    </ng-template>
+    
+</p-dialog>
+
+<p-confirmDialog style="width: fit-content;border-radius: 20px;"></p-confirmDialog>

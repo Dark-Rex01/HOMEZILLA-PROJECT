@@ -31,59 +31,68 @@
         
 
         <hr class="colorgraph">
-            <form >
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 
                 <div class="row gx-3 mb-3">
                   <div class="col-md-6">
                     
                     <i class="bi bi-person-circle"></i>&nbsp;
-                    <label class="small mb-1" for="inputFirstName">First Name</label>
-                    <input class="form-control is-valid" id="inputFirstName" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your First name" value={{user.firstName}} required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                      Looks good!
+                    <label class="small mb-1" for="firstName">First Name</label>
+                    <input class="form-control " formControlName="firstName" [ngClass]="{ 'is-invalid':  f['firstName'].errors }" type="text" placeholder="Enter your First name" value={{user.firstName}} >
+                    <div *ngIf="f['firstName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['firstName'].errors['required']">
+                      <small class="text-danger">FirstName is required</small>
+                    </div>
                     </div>
                   </div>
                     <div class="col-md-6">
                       <i class="bi bi-person-circle"></i>&nbsp;
                         <label class="small mb-1" for="inputLastName">Last Name</label>
-                        <input class="form-control is-valid " id="inputLastName" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Last name" value={{user.lastName}} required>
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                          Looks good!
+                        <input class="form-control " formControlName="lastName" [ngClass]="{ 'is-invalid':  f['lastName'].errors }" type="text" placeholder="Enter your Last name" value={{user.lastName}} >
+                        <div *ngIf="f['lastName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['lastName'].errors['required']">
+                          <small class="text-danger">LastName is required</small>
+                        </div>
                         </div>
                       </div>
                     <div class="col-md-6">
                       <i class="bi bi-person-vcard"></i>&nbsp;
                         <label class="small mb-1" for="inputUserName">User Name</label>
-                        <input class="form-control is-valid" id="inputUserName" [(ngModel)]="user.userName" [ngModelOptions]="{standalone: true}" type="text" placeholder="Enter your Username" value={{user.userName}} required>
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                          Looks good!
-                        </div>
+                        <input class="form-control " formControlName="userName" [ngClass]="{ 'is-invalid':  f['userName'].errors }" type="text" placeholder="Enter your User name" value={{user.userName}} >
+                    <div *ngIf="f['userName'].errors" class="invalid-feedback">
+                    <div *ngIf="f['userName'].errors['required']">
+                      <small class="text-danger">UserName is required</small>
+                    </div>
+                    </div>
                       </div>
                 </div>
                
                 <div class="mb-3">
                   <i class="bi bi-envelope"></i>&nbsp;
                     <label class="small mb-1" for="inputEmailAddress">Email</label>
-                    <div class="input-group has-validation">
-                    <input class="form-control is-valid" id="inputEmailAddress" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" type="email" placeholder="Enter your Email" value={{user.email}} required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                      Please enter a valid Email.
+                    <input class="form-control " formControlName="email" [ngClass]="{ 'is-invalid':  f['email'].errors }" type="text" placeholder="Enter your Email" value={{user.email}} >
+                    <div *ngIf="f['email'].errors" class="invalid-feedback">
+                    <div *ngIf="f['email'].errors['required']">
+                      <small class="text-danger">Enter valid Email</small>
                     </div>
                     </div>
+                    
                   </div>
                 <div class="row gx-3 mb-3">
                     <div class="col-md-6">
                       <i class="bi bi-phone"></i>&nbsp;
-                        <label class="small mb-1" for="inputPhone">Phone Number</label>
-                        <input class="form-control is-valid" id="inputPhone" [(ngModel)]="user.mobileNumber" [ngModelOptions]="{standalone: true}" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}} required>
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                          Please enter a valid Mobile Number.
+                        <label class="small mb-1" for="inputPhone">Mobile Number</label>
+                        <input class="form-control " formControlName="mobileNumber" [ngClass]="{ 'is-invalid':  f['mobileNumber'].errors }" type="text" placeholder="Enter your Mobile Number" value={{user.mobileNumber}} >
+                        <div *ngIf="f['mobileNumber'].errors" class="invalid-feedback">
+                        <div *ngIf="f['mobileNumber'].errors['required']">
+                          <small class="text-danger">Mobile Number is required</small>
+                        </div>
                         </div>
                       </div>
                     <div class="col-md-6">
                       <i class="bi bi-geo-alt"></i>&nbsp;
                         <label class="small mb-1" for="inputLocation">Location</label>
-                        <select class="form-control" [(ngModel)]="user.location" [ngModelOptions]="{standalone: true}" value={{user.location}} required>
+                        <select class="form-control"  value={{user.location}} >
                           <div></div>
                           <option value="">Choose a Location</option>
                           <option
@@ -100,7 +109,7 @@
                 <div class="mb-3">
                   <i class="bi bi-chat-left-heart"></i>&nbsp;
                   <label class="small mb-1" for="inputDescription">Description</label>
-                  <textarea class="form-control " id="inputDescription" rows="4" [(ngModel)]="user.description" [ngModelOptions]="{standalone: true}" type="text" placeholder="Introduce yourself !" value={{user.description}} required>
+                  <textarea class="form-control " formControlName="description" rows="4" type="text" placeholder="Introduce yourself !" value={{user.description}} >
                   </textarea>
                   <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     Please enter some Description.

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { User } from '../../../models/user';
 import { ProfileService } from '../../../services/profile.service';
@@ -10,30 +10,35 @@ import { ProfileService } from '../../../services/profile.service';
   styleUrls: ['./edit-details.component.css'],
 })
 export class EditDetailsComponent implements OnInit {
-  user: User;
+  user: User ;
   locationList: Array<string>;
   public userForm!: FormGroup;
+  submitted = true;
   profilePicture!: File;
   constructor(
     private profileService: ProfileService,
-    public fb: FormBuilder,
+    private fb: FormBuilder,
     private messageService: MessageService
-  ) {
+  ) 
+  {
     this.user = new User();
+    
   }
 
   ngOnInit() {
+    
     this.getProfileDetails();
     this.getLocation();
+    
   }
-
+  get f() { return this.userForm.controls; }
   updateProviderProfilePicture() {
-    console.log('okkk');
+
+   
     this.profileService
       .updateProviderProfilePicture(this.profilePicture)
       .subscribe({
         next: (response) => {
-            console.log("pic");
             this.messageService.add({
               severity: 'success',
               summary: 'Success',
@@ -51,10 +56,20 @@ export class EditDetailsComponent implements OnInit {
           });
         },
       });
+    
   }
   getProfileDetails() {
     this.profileService.getProviderProfileDetails().subscribe((user) => {
       this.user = user;
+      this.userForm = this.fb.group({
+        firstName: [this.user.firstName,Validators.required],
+        lastName: [this.user.lastName, Validators.required],
+        userName: [this.user.userName, Validators.required],
+        mobileNumber: [this.user.mobileNumber, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10)]],
+        email: [this.user.email, [Validators.required, Validators.email]],
+        location: [this.user.location,Validators.required],
+        description:[this.user.description]
+      })
     });
   }
   getLocation() {
@@ -64,6 +79,15 @@ export class EditDetailsComponent implements OnInit {
   }
 
   onSubmit() {
+    
+    this.submitted = true;
+    if(this.userForm.invalid)
+    {
+      return;
+    }
+    else{
+    this.user = this.userForm.value;
+    console.log(this.user)
     this.profileService.updateProviderProfile(this.user).subscribe(
       (response) => {
         console.log('Success!', response);
@@ -84,6 +108,7 @@ export class EditDetailsComponent implements OnInit {
       }
     );
   }
+}
   onChange(event) {
     this.profilePicture = event.target.files[0];
   }

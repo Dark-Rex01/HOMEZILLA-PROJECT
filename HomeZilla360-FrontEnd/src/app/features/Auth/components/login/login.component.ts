@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
             })
           }
           else{
-            this.router.navigate(['/provider/analytics']).then(() => {
+            this.router.navigate(['/provider/profile/edit-profile']).then(() => {
               this.messageService.add({severity:'success', summary: res.body.message, life: 3000});
             })
           }
