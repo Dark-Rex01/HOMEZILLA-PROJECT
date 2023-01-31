@@ -114,6 +114,10 @@
         box-shadow: none;
         background-color: #6366F1;
       }
+      .p-dialog .p-dialog-content{
+        width: fit-content;
+        border-radius: 20px;
+      }
 }
 
 @media screen and (max-width: 960px) {

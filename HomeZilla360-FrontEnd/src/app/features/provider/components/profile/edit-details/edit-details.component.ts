@@ -12,9 +12,10 @@ import { ProfileService } from '../../../services/profile.service';
 export class EditDetailsComponent implements OnInit {
   user: User ;
   locationList: Array<string>;
-  public userForm!: FormGroup;
+  public userForm: FormGroup;
   submitted = true;
   profilePicture!: File;
+  enable:boolean=true;
   constructor(
     private profileService: ProfileService,
     private fb: FormBuilder,
@@ -22,16 +23,24 @@ export class EditDetailsComponent implements OnInit {
   ) 
   {
     this.user = new User();
-    
+    this.userForm = this.fb.group({
+      firstName: [this.user.firstName,Validators.required],
+      lastName: [this.user.lastName, Validators.required],
+      userName: [this.user.userName, Validators.required],
+      mobileNumber: [this.user.mobileNumber, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10)]],
+      email: [this.user.email, [Validators.required, Validators.email]],
+      location: [this.user.location,Validators.required],
+      description:[this.user.description]
+    })
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     
-    this.getProfileDetails();
+    await this.getProfileDetails();
     this.getLocation();
     
   }
-  get f() { return this.userForm.controls; }
+  
   updateProviderProfilePicture() {
 
    
@@ -70,8 +79,10 @@ export class EditDetailsComponent implements OnInit {
         location: [this.user.location,Validators.required],
         description:[this.user.description]
       })
+      
     });
   }
+  get f() { return this.userForm.controls; }
   getLocation() {
     this.profileService.getLocationData().subscribe((res) => {
       this.locationList = res;
@@ -109,5 +120,6 @@ export class EditDetailsComponent implements OnInit {
 }
   onChange(event) {
     this.profilePicture = event.target.files[0];
+    this.enable=false;
   }
 }
