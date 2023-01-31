@@ -34,14 +34,12 @@ export class CurrentOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {this.pageNumber = params['PageNumber']});
-    console.log("first");
     this.getCurrentOrders(); 
   }
 
   private getCurrentOrders() {
     this.ordersService.getCurrentOrders(this.pageNumber).subscribe((orders: Orders) => {
       this.order = orders;
-      console.log(this.order);
     });
   }
 
@@ -53,8 +51,6 @@ export class CurrentOrdersComponent implements OnInit {
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
               this.ordersService.cancelOrder(orderData.id).subscribe(() => {
-                console.log("cancel order",orderData);
-                console.log("after change");
                 this.getCurrentOrders();
               });
               this.messageService.add({severity:'success', summary: 'successful', detail: 'Order Canceled', life:3000});    

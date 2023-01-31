@@ -11,7 +11,7 @@ import { TokenPayload } from "../models/token";
 export class JwtService {
   token : TokenPayload = new TokenPayload();
   JwtToken: string = "";
-
+  logged: Boolean = false;
   constructor(
     private router: Router,
     private messageService: MessageService,
@@ -34,9 +34,9 @@ export class JwtService {
   public logOut()
   {
     window.localStorage.removeItem("auth-token");
-    this.router.navigate(['/home']).then(() => {
-      this.messageService.add({severity:'success', summary: "Logout Successfull", life: 3000});
-    })
+    // this.router.navigate(['/home']).then(() => {
+    //   this.messageService.add({severity:'success', summary: "Logout Successfull", life: 3000});
+    // })
   }
   
   public getDecodedToken(): TokenPayload{
@@ -54,13 +54,16 @@ export class JwtService {
       this.getDecodedAccessToken();
       if(this.tokenExpired(this.getUser()))
       {
+        this.logged = false;
         return false;
       }
       else{
+        this.logged = true;
         return true;
       }
     }
     else{
+      this.logged = false;
       return false;
     }
   }

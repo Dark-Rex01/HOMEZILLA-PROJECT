@@ -87,10 +87,8 @@ export class EditDetailsComponent implements OnInit {
     }
     else{
     this.user = this.userForm.value;
-    console.log(this.user)
     this.profileService.updateProviderProfile(this.user).subscribe(
       (response) => {
-        console.log('Success!', response);
         this.messageService.add({
           severity: 'success',
           summary: 'Success',

@@ -73,7 +73,7 @@ export class ViewDetailsComponent implements OnInit,  OnChanges{
         }
       },
       error:(err => {
-        console.log(err);
+        this.messageService.add({severity:'error', summary: "Something Went Wrong", life: 3000});
       })
       
     })

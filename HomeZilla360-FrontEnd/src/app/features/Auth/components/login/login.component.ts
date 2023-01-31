@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { JwtService } from 'src/app/core/utils/jwt.service';
+import { TopNavComponent } from 'src/app/shared/components/top-nav/top-nav.component';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
 
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private messageService: MessageService,
     private storageService: StorageService,
     private jwtService: JwtService,
-    private router: Router
+    private router: Router, 
+    public topNav: TopNavComponent
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,7 @@ export class LoginComponent implements OnInit {
         next: (res) => {
           this.storageService.saveToken(res['headers'].get('authorization'));
           var token = this.jwtService.getDecodedToken();
+          this.topNav.ngOnInit();
           if(token.role === "Customer")
           {
             this.router.navigate(['/customer/analytics']).then(() => {

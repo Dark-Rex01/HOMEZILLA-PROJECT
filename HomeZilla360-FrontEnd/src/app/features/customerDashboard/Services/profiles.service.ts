@@ -13,17 +13,17 @@ export class ProfilesService {
   constructor(private http: HttpClient) { }
   
   getProfileDetails():Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/api/Customers/Get-User-Data` );
+    return this.http.get<User>(`${this.baseUrl}api/Customers/Get-User-Data` );
   }
 
   updateProfile(user: User): Observable<User>{
-    return this.http.put<User>(`${this.baseUrl}/api/Customers/Update-User-Data`, user);
+    return this.http.put<User>(`${this.baseUrl}api/Customers/Update-User-Data`, user);
   }
 
   updateProfilePicture(picture:any): Observable<any>{
     const formData = new FormData();
     formData.append("file", picture, picture?.name);
-    return this.http.put(`${this.baseUrl}/api/Customers/Update-Profile`,formData);
+    return this.http.put(`${this.baseUrl}api/Customers/Update-Profile`,formData);
   }
 
 

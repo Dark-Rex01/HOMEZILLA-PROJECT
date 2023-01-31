@@ -13,6 +13,7 @@ import {StepsModule} from 'primeng/steps';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from "./services/auth.service";
 import { HttpClientModule } from "@angular/common/http";
+import { TopNavComponent } from "src/app/shared/components/top-nav/top-nav.component";
 
 
 @NgModule({

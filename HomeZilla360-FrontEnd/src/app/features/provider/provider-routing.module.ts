@@ -12,10 +12,12 @@ import { EditServicesComponent } from './components/profile/edit-services/edit-s
 import { TopWidgetsComponent } from './components/analytics/top-widgets/top-widgets.component';
 import { BarChartComponent } from './components/analytics/bar-chart/bar-chart.component';
 import { DoughnutChartComponent } from './components/analytics/doughnut-chart/doughnut-chart.component';
+import { ProviderGuard } from 'src/app/core/guards/provider.guard';
 const routes: Routes = [
   {
     path: 'provider',
     component: ProviderComponent,
+    canActivate: [ProviderGuard],
     children: [
       {
         path: 'profile',

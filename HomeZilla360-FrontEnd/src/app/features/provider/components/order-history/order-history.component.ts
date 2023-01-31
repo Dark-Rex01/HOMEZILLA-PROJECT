@@ -31,12 +31,10 @@ constructor(private ordersService: OrderDetailsService) {
   }
   viewDetails(orderHistory: any){
     this.viewDetailData = this.orderHistory.data.find(x => x.id == orderHistory)
-    console.log(this.viewDetailData);
     this.detailsDialog = true;
   }
   paginate(event: any) {
     this.pageNumber = ++event.page ;
-    console.log(this.pageNumber);
     this.getProviderPastOrders();
   }
 

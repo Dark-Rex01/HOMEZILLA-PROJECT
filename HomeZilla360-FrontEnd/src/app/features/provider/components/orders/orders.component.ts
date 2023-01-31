@@ -68,13 +68,11 @@ export class OrdersComponent implements OnInit {
   }
   viewDetails(waitingOrders: any){
     this.viewDetailData = this.waitingOrders.data.find(x => x.id == waitingOrders)
-    console.log(this.viewDetailData);
     this.detailsDialog = true;
   }
 
     paginate(event: any) {
     this.pageNumber = ++event.page ;
-    console.log(this.pageNumber);
     this.getProviderCurrentOrders();
   }
 }

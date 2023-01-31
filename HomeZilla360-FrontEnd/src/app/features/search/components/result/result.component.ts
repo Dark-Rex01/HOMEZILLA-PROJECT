@@ -92,7 +92,6 @@ export class ResultComponent implements OnInit {
 
     show(id: string)
     {
-        console.log(this.jwtService.isLogged);
         if(this.jwtService.isLogged())
         {
             this.visibility = true;

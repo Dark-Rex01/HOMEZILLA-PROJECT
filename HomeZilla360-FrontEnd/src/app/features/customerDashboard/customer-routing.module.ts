@@ -5,11 +5,13 @@ import { DashboardComponent } from "./Components/Profile/profile.component";
 import { CurrentOrdersComponent } from "./Components/current-orders/current-orders.component";
 import { OrderHistoryComponent } from "./Components/OrderHistory/order-history.component";
 import { CustomerComponent } from "./Components/customer/customer.component";
+import { CustomerGuard } from "src/app/core/guards/customer.guard";
 
 const routes: Routes = [
     {
       path:'customer',
       component: CustomerComponent,
+      canActivate: [CustomerGuard],
       children: [
         {
           path:'analytics',

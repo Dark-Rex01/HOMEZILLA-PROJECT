@@ -9,6 +9,8 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { DockModule } from "primeng/dock";
+import { Messages } from "primeng/messages";
+import { ToastModule } from "primeng/toast";
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { DockModule } from "primeng/dock";
         TieredMenuModule,
         CommonModule,
         RouterModule,
-        DockModule
+        DockModule,
+        ToastModule
     ],
     exports: [SearchComponent, TopNavComponent, SidebarComponent]
 })
