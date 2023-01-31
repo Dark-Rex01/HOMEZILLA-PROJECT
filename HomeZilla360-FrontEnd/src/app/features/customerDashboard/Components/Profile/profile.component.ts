@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit{
   location:string= "";
   pageNumber: number=1;
   submitted = false;
-  
+  enable:boolean = true;
 
   constructor(
     
@@ -90,6 +90,7 @@ export class DashboardComponent implements OnInit{
   onChange(event:any)
   {
     this.profilePicture = event.target.files[0];
+    this.enable = false;
   }
     
 

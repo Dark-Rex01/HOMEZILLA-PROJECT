@@ -25,12 +25,25 @@ export class TopNavComponent implements OnInit {
   }
   customerMenu!: MenuItem[];
   providerMenu!: MenuItem[];
-  profilePic: string;
-  items!: MenuItem[];
+  static profilePic: string;
+  static userName: string;
+  static items: MenuItem[];
   token: TokenPayload = new TokenPayload();
   static logged: Boolean = false;
   get log() {
     return  TopNavComponent.logged;
+  }
+  get item()
+  {
+    return TopNavComponent.items;
+  }
+  get profile()
+  {
+    return TopNavComponent.profilePic;
+  }
+  get user()
+  {
+    return TopNavComponent.userName;
   }
     ngOnInit() {
         this.customerMenu = [
@@ -85,17 +98,20 @@ export class TopNavComponent implements OnInit {
       if(isLoggedIn)
       {
         this.token = this.jwtService.getDecodedToken();
+        TopNavComponent.logged
         if(this.token.role == "Customer")
         {
-          this.items = this.customerMenu;
+          TopNavComponent.items = this.customerMenu;
           this.customerServcie.getProfileDetails().subscribe(res => {
-            this.profilePic = res.profilePicture;
+            TopNavComponent.profilePic = res.profilePicture;
+            TopNavComponent.userName = res.userName;
           })
         }
         else{
-          this.items = this.providerMenu;
+          TopNavComponent.items = this.providerMenu;
           this.providerService.getProviderProfileDetails().subscribe(res => {
-            this.profilePic = res.profilePicture;
+            TopNavComponent.profilePic = res.profilePicture;
+            TopNavComponent.userName = res.userName;
           })
         }
         return  true;

@@ -59,7 +59,7 @@ export class ResultComponent implements OnInit {
     }
 
     paginate(event: any) {
-        this.pageNumber = event.page ;
+        this.pageNumber = event.page + 1 ;
         this.getData();
     }
 
