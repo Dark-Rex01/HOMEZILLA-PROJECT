@@ -11,11 +11,11 @@ export class ProfilesService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
-  
+  //to get customer profile details
   getProfileDetails():Observable<User>{
     return this.http.get<User>(`${this.baseUrl}api/Customers/Get-User-Data` );
   }
-
+// to update customer details
   updateProfile(user: User): Observable<User>{
     return this.http.put<User>(`${this.baseUrl}api/Customers/Update-User-Data`, user);
   }
@@ -25,8 +25,5 @@ export class ProfilesService {
     formData.append("file", picture, picture?.name);
     return this.http.put(`${this.baseUrl}api/Customers/Update-Profile`,formData);
   }
-
-
-
 
 }

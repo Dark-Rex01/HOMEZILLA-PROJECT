@@ -26,7 +26,7 @@ export class LineComponent implements OnInit {
       next: (response)=>{
         this.Data = {
           labels: [this.monthNames[(this.date).toString()],
-           this.monthNames[(this.date+11).toString()] ,
+           this.monthNames[(this.date-1).toString()] ,
            this.monthNames[(this.date+10).toString()],
            this.monthNames[(this.date+9).toString()],
            this.monthNames[(this.date+8).toString()], 
@@ -37,6 +37,7 @@ export class LineComponent implements OnInit {
               label: 'Number of Orders',
               backgroundColor: '#42A5F5',
               data: response,
+              fill: true,
             },
           ],
         };

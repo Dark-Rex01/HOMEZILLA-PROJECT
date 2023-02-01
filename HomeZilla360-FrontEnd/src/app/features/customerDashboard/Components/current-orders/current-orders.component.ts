@@ -2,14 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { OrderData } from '../../model/orderData';
-import { Observable } from 'rxjs';
-import { BookOrder } from '../../model/book-order';
 import { OrderDetailsService } from '../../Services/order-details.service';
 import { Orders } from '../../model/order';
-import { OrderStatus } from 'src/app/features/provider/models/order-status';
-import { orderStatus } from '../../model/order-status';
-import { PrimeNGConfig } from 'primeng/api';
-import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-current-orders',
@@ -20,26 +15,26 @@ export class CurrentOrdersComponent implements OnInit {
 
   order: Orders = new Orders;
   selectedOrder?: Orders[];
-  pageNumber: number = 0;
-
+  pageNumber: number = 1;
+  totalRecords: number = 0;
+  submitted?: boolean;
+ 
 
   constructor(
     private ordersService: OrderDetailsService,
     private messageService: MessageService, 
     private confirmationService: ConfirmationService,
-    private primengConfig: PrimeNGConfig,
-    private route: ActivatedRoute,
-    private router: Router
+    
     ) { this.order = new Orders();}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {this.pageNumber = params['PageNumber']});
     this.getCurrentOrders(); 
   }
 
-  private getCurrentOrders() {
+   getCurrentOrders() {
     this.ordersService.getCurrentOrders(this.pageNumber).subscribe((orders: Orders) => {
       this.order = orders;
+      this.totalRecords = orders.totalPages * 10;
     });
   }
 
@@ -57,12 +52,13 @@ export class CurrentOrdersComponent implements OnInit {
           }
           
         })
-      // this.getCurrentOrders();
+      
   }
 
 
   paginate(event: any) {
-    this.pageNumber = event.page ;
+    this.pageNumber = ++event.page ;
+    this.getCurrentOrders();
    
 }
   

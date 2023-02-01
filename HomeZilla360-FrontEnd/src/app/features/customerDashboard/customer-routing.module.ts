@@ -6,6 +6,7 @@ import { CurrentOrdersComponent } from "./Components/current-orders/current-orde
 import { OrderHistoryComponent } from "./Components/OrderHistory/order-history.component";
 import { CustomerComponent } from "./Components/customer/customer.component";
 import { CustomerGuard } from "src/app/core/guards/customer.guard";
+import { NotFoundComponent } from "src/app/core/error/not-found/not-found.component";
 
 const routes: Routes = [
     {
@@ -34,6 +35,12 @@ const routes: Routes = [
           title: 'Order History'
         }
       ]
+    },
+    {
+      path: '**',
+      component: NotFoundComponent,
+      pathMatch: 'full',
+      title: 'Not Found',
     },
   ];
   

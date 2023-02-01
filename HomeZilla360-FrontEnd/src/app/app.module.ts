@@ -1,25 +1,23 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FeaturesModule } from './features/features.module';
-import {ToastModule} from 'primeng/toast';
+import { NotFoundComponent } from './core/error/not-found/not-found.component';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptors';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { SharedModule } from './shared/shared.module';
+import { FeaturesModule } from './features/features.module';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     AppRoutingModule,
     FeaturesModule,
@@ -33,7 +31,8 @@ import { TopNavComponent } from './shared/components/top-nav/top-nav.component';
     MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-    TopNavComponent
+    TopNavComponent,
+    SidebarComponent
   ],
   bootstrap: [AppComponent]
 })

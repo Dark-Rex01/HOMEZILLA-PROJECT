@@ -1,16 +1,15 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { SearchComponent } from "./components/search/search.component";
-import { TopNavComponent } from './components/top-nav/top-nav.component';
-import {MenubarModule} from 'primeng/menubar';
-import { ButtonModule } from "primeng/button";
-import { TieredMenuModule } from 'primeng/tieredmenu';
-import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { ButtonModule } from "primeng/button";
 import { DockModule } from "primeng/dock";
-import { Messages } from "primeng/messages";
+import { MenubarModule } from 'primeng/menubar';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ToastModule } from "primeng/toast";
+import { SearchComponent } from "./components/search/search.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { TopNavComponent } from './components/top-nav/top-nav.component';
 
 
 @NgModule({

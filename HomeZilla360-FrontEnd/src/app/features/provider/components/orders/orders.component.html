@@ -1,5 +1,6 @@
 <p-toast></p-toast>
-<p-card class="card" header="Manage Orders" >
+<div class="card text-center mx-auto">
+    <h1>Manage Orders </h1>
     <p-table [value]="waitingOrders.data" [rows]="5" [pageLinks]="3" [rowHover]="true" [(selection)]="waitingOrders.data"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
@@ -50,7 +51,7 @@
         </ng-template>
     </p-table>
     <p-paginator [rows]="10" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
-</p-card>
+</div>
 <p-dialog [(visible)]="detailsDialog"   header="Customer Details" [modal]="true" styleClass="p-fluid" class="dialog">
     <ng-template pTemplate="content" >
         <div class="container dialogContainer">

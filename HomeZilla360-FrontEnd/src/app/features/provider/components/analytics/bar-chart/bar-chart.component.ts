@@ -28,7 +28,7 @@ export class BarChartComponent implements OnInit {
       next: (res)=>{
         this.data = {
           labels: [this.monthNames[(this.date).toString()],
-           this.monthNames[(this.date+11).toString()] ,
+           this.monthNames[(this.date-1).toString()] ,
            this.monthNames[(this.date+10).toString()],
            this.monthNames[(this.date+9).toString()],
            this.monthNames[(this.date+8).toString()], 
@@ -39,6 +39,7 @@ export class BarChartComponent implements OnInit {
               label: 'Number of Orders',
               backgroundColor: '#42A5F5',
               data: res,
+              fill: true,
             },
           ],
         };

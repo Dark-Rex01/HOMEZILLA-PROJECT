@@ -19,7 +19,7 @@
           </div>
           
               <button (click)="updateProfilePicture()" 
-                  class="btn btn-success" [disabled]="enable" style="background-color: #6366F1; height: 40px; text-align: center; margin-left: 90px; "  >
+                  class="btn btn-success" [disabled]="enable" style="background-color: #6366F1; height: 40px; text-align: center; margin-left: 90px; margin-top: 30px;"  >
                   Upload
               </button>
           </div>
@@ -34,11 +34,11 @@
            <form [formGroup]="dashboardform" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label class="small mb-1" for="inputUserName">User Name</label>
-              <input class="form-control is-valid"   [(ngModel)]="user.userName"  type="text" placeholder="Username" formControlName="userName" [ngClass]="{ 'is-invalid': submitted && d['userName'].errors }" required>
-              <div *ngIf="submitted && d['userName'].errors" class="invalid-feedback">
-                <div *ngIf="d['userName'].errors['required']">
-                  <small class="text-danger">UserName is required</small>
-                </div>
+              <input class="form-control is-valid" formControlName="userName" [ngClass]="{ 'is-invalid': d['userName'].errors }" type="text" placeholder="Enter your User name" value={{user.userName}} >
+              <div *ngIf="d['userName'].errors" class="invalid-feedback">
+              <div *ngIf="d['userName'].errors['required']">
+                <small class="text-danger">UserName is required</small>
+              </div>
               </div>
 
               </div>
@@ -46,7 +46,7 @@
               <div class="row gx-3 mb-3">
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputFirstName">First Name</label>
-                 <input class="form-control is-valid"  [(ngModel)]="user.firstName" formControlName="firstName"  type="text" placeholder="Enter your First name" value={{user.firstName}} [ngClass]="{ 'is-invalid': submitted && d['firstName'].errors }" required>
+                 <input class="form-control is-valid" formControlName="firstName"  type="text" placeholder="Enter your First name" value={{user.firstName}} [ngClass]="{ 'is-invalid':  d['firstName'].errors }" required>
                  <div *ngIf="submitted && d['firstName'].errors" class="invalid-feedback">
                   <div *ngIf="d['firstName'].errors['required']">
                     <small class="text-danger">FirstName is required</small>
@@ -57,7 +57,7 @@
                 
                   <div class="col-md-6">
                       <label class="small mb-1" for="inputLastName">Last Name</label>
-                      <input class="form-control is-valid " id="inputLastName" [(ngModel)]="user.lastName" formControlName="lastName" type="text" placeholder="Enter your Last name" value={{user.lastName}} [ngClass]="{ 'is-invalid': submitted && d['lastName'].errors }" required>
+                      <input class="form-control is-valid " id="inputLastName"  formControlName="lastName" type="text" placeholder="Enter your Last name" value={{user.lastName}} [ngClass]="{ 'is-invalid': submitted && d['lastName'].errors }" required>
                       <div *ngIf="submitted && d['lastName'].errors" class="invalid-feedback">
                         <div *ngIf="d['lastName'].errors['required']">
                           <small class="text-danger">LastName is required</small>
@@ -69,7 +69,7 @@
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputEmailAddress">Email</label>
                   <div class="input-group has-validation">
-                  <input class="form-control is-valid" id="inputEmailAddress" [(ngModel)]="user.email" formControlName="email" type="email" placeholder="Enter your Email" value={{user.email}}  [ngClass]="{ 'is-invalid': submitted && d['email'].errors }" required>
+                  <input class="form-control is-valid" id="inputEmailAddress" formControlName="email" type="email" placeholder="Enter your Email" value={{user.email}}  [ngClass]="{ 'is-invalid': submitted && d['email'].errors }" required>
                   <div *ngIf="submitted && d['email'].errors" class="invalid-feedback">
                     <div *ngIf="d['email'].errors['required']">
                       <small class="text-danger">Email is required</small>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputPhone">Phone Number</label>
-                  <input class="form-control is-valid" id="inputPhone" [(ngModel)]="user.mobileNumber" formControlName="mobileNumber" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}}  [ngClass]="{ 'is-invalid': submitted && d['mobileNumber'].errors }" required>
+                  <input class="form-control is-valid" id="inputPhone" formControlName="mobileNumber" type="tel" placeholder="Enter your phone number" value={{user.mobileNumber}}  [ngClass]="{ 'is-invalid': submitted && d['mobileNumber'].errors }" required>
                   <div *ngIf="submitted && d['mobileNumber'].errors" class="invalid-feedback">
                     <div *ngIf="d['mobileNumber'].errors['required']">
                       <small class="text-danger">MobileNumber is required</small>
@@ -99,7 +99,7 @@
 
               <div class="mb-3">
                 <label class="small mb-1" for="inputAddress">Address</label>
-                <input class="form-control is-valid" id="inputAddress" [(ngModel)]="user.address" formControlName="address" type="text" placeholder="Enter your address" value={{user.address}} [ngClass]="{ 'is-invalid': submitted && d['address'].errors }" required>
+                <input class="form-control is-valid" id="inputAddress" formControlName="address" type="text" placeholder="Enter your address" value={{user.address}} [ngClass]="{ 'is-invalid': submitted && d['address'].errors }" required>
                 <div *ngIf="submitted && d['address'].errors" class="invalid-feedback">
                   <div *ngIf="d['address'].errors['required']">
                     <small class="text-danger">Address is required</small>

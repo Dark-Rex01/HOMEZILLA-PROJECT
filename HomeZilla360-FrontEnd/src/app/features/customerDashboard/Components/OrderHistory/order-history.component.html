@@ -18,11 +18,11 @@
             <ng-template pTemplate="header">
                 <tr>
                     
-                    <th pSortableColumn="id" style="min-width:7rem"> Reference Id<p-sortIcon ></p-sortIcon></th>
-                    <th pSortableColumn="service" style="min-width:5rem">Service <p-sortIcon ></p-sortIcon></th>
-                    <th pSortableColumn="status" style="min-width:4rem">Status <p-sortIcon ></p-sortIcon></th>
-                    <th pSortableColumn="from" style="min-width:4rem">Appointment From <p-sortIcon ></p-sortIcon></th>
-                    <th pSortableColumn="to" style="min-width:4rem">Appointment To <p-sortIcon ></p-sortIcon></th>
+                    <th pSortableColumn="id" style="min-width:7rem"> Reference Id<p-sortIcon field="id"></p-sortIcon></th>
+                    <th pSortableColumn="serviceName" style="min-width:5rem">Service Name<p-sortIcon field="serviceName"></p-sortIcon></th>
+                    <th pSortableColumn="status" style="min-width:4rem">Status <p-sortIcon field="status"></p-sortIcon></th>
+                    <th pSortableColumn="appointmentFrom" style="min-width:4rem">Appointment From <p-sortIcon field="appointmentFrom"></p-sortIcon></th>
+                    <th pSortableColumn="appointmentTo" style="min-width:4rem">Appointment To <p-sortIcon field="appointmentTo"></p-sortIcon></th>
                    
                     <th></th>
                 </tr>
@@ -33,14 +33,26 @@
                   
                   <td>{{order.id}}</td>
                   <td>{{order.serviceName }}</td>
-                  <td><span pBadge  [value]="order.status" size="large" styleClass="p-mr-2"></span></td>
-                  <td>{{order.appointmentFrom }}</td>
-                  <td>{{order.appointmentTo }}</td>
+                  <td>
+                    <div *ngIf = "order.status==='Accepted'">
+                        
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span pBadge class="'order-badge status-' + order.status" severity="success" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
+                      </div>
+                      <div *ngIf = "order.status==='Cancelled'">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span pBadge class="'order-badge status-' + order.status" severity="danger" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
+                  
+                      </div>
+                  </td>
+                  <td>{{order.appointmentFrom | date :'short'}}</td>
+                  <td>{{order.appointmentTo | date :'short'}}</td>
                   
               </tr>
           </ng-template>         
+    
         </p-table>
-        <p-paginator [rows]="6" (onPageChange)="paginate($event)"></p-paginator>
+        <p-paginator [rows]="10" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
     </p-card>
     <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
   

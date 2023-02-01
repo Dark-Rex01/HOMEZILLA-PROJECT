@@ -13,34 +13,33 @@ export class DashboardComponent implements OnInit{
   user: User;
   profilePicture!: File;
   display: boolean = false;
-  dashboardform! : FormGroup;
-  query: string= "";
-  location:string= "";
-  pageNumber: number=1;
-  submitted = false;
+  public dashboardform! : FormGroup;
+  submitted = true;
   enable:boolean = true;
 
   constructor(
     
     private profileService : ProfilesService,
     private messageService: MessageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+
   ){
     this.user = new User();
+    this.dashboardform = this.formBuilder.group({      
+      userName: [this.user.userName, Validators.required],
+      firstName: [this.user.firstName,Validators.required],
+      lastName: [this.user.lastName, Validators.required],
+      mobileNumber: [this.user.mobileNumber, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10)]],
+      email: [this.user.email, [Validators.required, Validators.email]],  
+      address: [this.user.address, Validators.required],
+    })
   }
 
-  ngOnInit() {
+  async ngOnInit() {
 
-    this.dashboardform = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      userName: ['', Validators.required],
-      mobileNumber: ['', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10)]],
-      email: ['', [Validators.required, Validators.email]],
-      address:  ['', Validators.required],      
-    })
+    
 
-         this.getProfileDetails();
+         await this.getProfileDetails();
          
 
   }
@@ -51,6 +50,14 @@ export class DashboardComponent implements OnInit{
   getProfileDetails(){
     this.profileService.getProfileDetails().subscribe(user => {
       this.user = user;
+      this.dashboardform = this.formBuilder.group({      
+        userName: [this.user.userName, Validators.required],
+        firstName: [this.user.firstName,Validators.required],
+        lastName: [this.user.lastName, Validators.required],
+        mobileNumber: [this.user.mobileNumber, [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10)]],
+        email: [this.user.email, [Validators.required, Validators.email]],  
+        address: [this.user.address, Validators.required],
+      })
     }); 
   }
 

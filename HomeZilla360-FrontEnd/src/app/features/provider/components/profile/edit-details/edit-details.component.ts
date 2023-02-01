@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { TopNavComponent } from 'src/app/shared/components/top-nav/top-nav.component';
 import { User } from '../../../models/user';
 import { ProfileService } from '../../../services/profile.service';
 
@@ -19,7 +20,8 @@ export class EditDetailsComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public topNav: TopNavComponent
   ) 
   {
     this.user = new User();
@@ -54,7 +56,7 @@ export class EditDetailsComponent implements OnInit {
               detail: 'Profile Picture Uploaded Successfully',
               life: 3000,
             });
-         
+          this.topNav.ngOnInit();
           this.getProfileDetails();
         },
         error: (error) => {
@@ -106,6 +108,7 @@ export class EditDetailsComponent implements OnInit {
           detail: 'Profile Updated Successfully',
           life: 3000,
         });
+        this.topNav.ngOnInit();
       },
 
       (error) => {

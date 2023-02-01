@@ -2,8 +2,6 @@ import { Injectable, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Orders } from '../model/order';
-import { BookOrder } from '../model/book-order';
-import { orderStatus } from '../model/order-status';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -16,30 +14,31 @@ export class OrderDetailsService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
-
+//to get customer current orders details
   getCurrentOrders(pageNumber: number): Observable<Orders> {
     var currentOrders: Orders = {
       currentPage: 1,
       data: [],
       totalPages: 0
     };
-  
-    return  this.http.get<Orders>(`${this.baseUrl}api/Customers/Current-Order`).pipe(
+    let params = this.getParams(pageNumber);
+    return  this.http.get<Orders>(`${this.baseUrl}api/Customers/Current-Order`,{params: params}).pipe(
       map((response: Orders ) => {
-       
+        currentOrders = response;
         return  response;
       })
     );
   }
  
-
-  getPastOrders(): Observable<Orders> {
+// to get customer past orders details
+  getPastOrders(pageNumber: number): Observable<Orders> {
     var pastOrders: Orders = {
       currentPage: 1,
       data: [],
       totalPages: 0
     };
-    return  this.http.get<Orders>(`${this.baseUrl}api/Customers/Past-Order`).pipe(
+    let params = this.getParams(pageNumber);
+    return  this.http.get<Orders>(`${this.baseUrl}api/Customers/Past-Order`,{params: params}).pipe(
       map((response: Orders ) => {
         pastOrders = response;
         return pastOrders;
@@ -47,9 +46,14 @@ export class OrderDetailsService {
       })
     );
   }
+  getParams(PageNumber:number): HttpParams {
+    let obj = {PageNumber};
+    return Object.keys(obj).reduce((params, key) => 
+            obj[key as keyof typeof obj] ? params.append(key, obj[key as keyof typeof obj]) : params, new HttpParams())
+  }
 
 
-  cancelOrder(orderId: string | undefined)
+  cancelOrder(orderId: string)
   {
     return this.http.put(`${this.baseUrl}CancelOrder`, { orderId: orderId },  {responseType: 'text'});
   }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { JwtService } from 'src/app/core/utils/jwt.service';
+import { SidebarComponent } from 'src/app/shared/components/sidebar/sidebar.component';
 import { TopNavComponent } from 'src/app/shared/components/top-nav/top-nav.component';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private jwtService: JwtService,
     private router: Router, 
-    public topNav: TopNavComponent
+    public topNav: TopNavComponent,
+    public sideNav: SidebarComponent
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
           this.storageService.saveToken(res['headers'].get('authorization'));
           var token = this.jwtService.getDecodedToken();
           this.topNav.ngOnInit();
+          //this.sideNav.ngOnInit();
           if(token.role === "Customer")
           {
             this.router.navigate(['/customer/analytics']).then(() => {
