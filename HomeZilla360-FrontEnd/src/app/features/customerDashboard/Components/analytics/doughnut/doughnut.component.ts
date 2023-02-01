@@ -22,7 +22,7 @@ export class DoughnutComponent implements OnInit {
       this.analyticservice.getDoughnutChart().subscribe({
         next: (response) => {
           this.data = {
-            labels: ['Pending Orders','Accepted Orders', 'No Response','Declined Orders', 'Cancelled Orders'],
+            labels: ['Pending Orders','Accepted Orders','Declined Orders',  'No Response','Cancelled Orders'],
             datasets: [
                 {
                     data: response,

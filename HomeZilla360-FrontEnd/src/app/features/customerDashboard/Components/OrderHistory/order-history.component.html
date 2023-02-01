@@ -41,9 +41,14 @@
                       </div>
                       <div *ngIf = "order.status==='Cancelled'">
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span pBadge class="'order-badge status-' + order.status" severity="danger" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
+                      <span pBadge class="'order-badge status-' + order.status" severity="warning" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
                   
                       </div>
+                      <div *ngIf = "order.status==='Declined'">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span pBadge class="'order-badge status-' + order.status" severity="danger" [value]="order.status" size="large" styleClass="p-mr-2"  ></span>
+                    
+                        </div>
                   </td>
                   <td>{{order.appointmentFrom | date :'short'}}</td>
                   <td>{{order.appointmentTo | date :'short'}}</td>
